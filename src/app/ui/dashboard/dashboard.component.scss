@@ -1,0 +1,243 @@
+#shadow{
+    box-shadow: none !important;
+}
+
+.top-nav-collapse {
+    background-color: #0E1A42 !important;
+  }
+  
+  .navbar:not(.top-nav-collapse) {
+    background: transparent !important;
+  }
+  .card2{
+    border: 0 !important;
+    font-weight: 400!important;
+    background: #fff;
+    padding: 10px 16px 20px 16px;
+  }
+  @media (max-width: 1392px) {
+    .mt-8{
+      margin-top: 7% !important ;
+    }
+    
+  }
+  @media (max-width: 991px) {
+    .navbar:not(.top-nav-collapse) {
+      background: #0E1A42 !important;
+    }
+  }
+  .headfont2{
+    color:#53BF00;
+    font-size: 16px;
+  }
+  .headfont3{
+    color:#EF0A0A;
+    font-size: 16px;
+  }
+  
+  .containerSetting{
+    padding: 15px 80px 15px 80px;
+  }
+
+  .mt-8{
+    margin-top: 6%;
+}
+@media (max-width: 1176px) {
+  .containerSetting{
+    padding: 10px 10px 10px 10px;
+  }
+  .mt-8{
+    margin-top: 1%;
+  }
+  html,
+  body,
+  header,
+  #intro-section {
+    min-height: 10vh !important;
+  }
+}
+
+  @media (max-width: 776px) {
+    .containerSetting{
+      padding: 0px 0px 0px 0px;
+    }
+    .mt-8{
+      margin-top: 1%;
+    }
+  }
+  @media (max-width: 440px) {
+    .containerSetting{
+      padding: 0px 0px 0px 0px;
+    }
+    .mt-8{
+      margin-top: 1%;
+    }
+    html,
+    body,
+    header,
+    #intro-section {
+      min-height: 20vh;
+    }
+    .card1{
+      border: 0 !important;
+      font-weight: 400!important;
+     // background: #fff;
+      padding: 10px 40px 20px 40px;
+      margin: 20px 20px 20px 20px;
+    }
+  
+
+  }
+  
+  .iconHeadFont{
+      font-size: 18px;
+      color:#fff;
+      font-weight: 700;
+      margin-bottom: 0rem;
+  }
+  .iconFont{
+    font-size: 14px;
+    color:#fff;
+    font-weight: 700;
+}
+@media (max-width: 1492px){
+    .iconHeadFont{
+      font-size: 16px;
+      color:#fff;
+      font-weight: 700;
+      margin-bottom: 0rem;
+  }
+  .iconFont{
+    font-size: 14px;
+    color:#fff;
+    font-weight: 700;
+  }
+  
+  .card2{
+    border: 0 !important;
+    font-weight: 400!important;
+    background: #fff;
+    padding: 10px 2px 20px 2px;
+  }
+
+}
+@media (max-width: 1392px){
+  .iconHeadFont{
+    font-size: 12px;
+    color:#fff;
+    font-weight: 700;
+    margin-bottom: 0rem;
+  }
+  .iconFont{
+    font-size: 12px;
+    color:#fff;
+    font-weight: 700;
+  }
+}
+@media (max-width: 1292px){
+  .iconHeadFont{
+    font-size: 12px;
+    color:#fff;
+    font-weight: 700;
+    margin-bottom: 0rem;
+  }
+  .iconFont{
+    font-size: 12px;
+    color:#fff;
+    font-weight: 700;
+  }
+}
+.tableFont{
+  font-size: 14px;
+  color:#222222;
+}
+
+.table1 td{
+padding-top: 7px !important;
+padding-bottom: 7px !important;
+}
+
+.btn-floating {
+  width: 47px;
+  height: 47px;
+  position: relative;
+  z-index: 1;
+  vertical-align: middle;
+  display: inline-block;
+  overflow: hidden;
+  -webkit-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+  margin: 10px;
+      margin-right: 10px;
+      margin-left: 10px;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  padding: 0;
+  cursor: pointer;
+}
+.mx-1 {
+  margin-left: .25rem !important;
+}
+.centerCoin{
+padding-left: 9px !important;
+padding-top: 8px !important;
+}
+.btcCoin{
+  background: #F7931A;
+  color:#fff;
+}
+.ethCoin{
+  background: #313640;
+  color:#fff;
+}
+.bchCoin{
+  background: #32D82C;
+}
+.ltcCoin{
+  background: #05057d;
+}
+.faIconStyle{
+  padding-left: 15px !important;
+  font-size: 18px !important;
+  color: #1A73E8 !important;
+  padding-top: 14px !important;
+}
+.mb-0{
+  margin-bottom: 0rem!important;
+}
+.btn-1{
+  -webkit-box-shadow: 0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15) !important;
+  box-shadow: 0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15) !important;
+}
+.containerHeight{
+  min-height: 40vh;
+}
+.transferCoin{
+  float: right; 
+  padding-top: 20px;
+}
+.transferCoin1{
+  float: right; 
+}
+option.line1 {
+	background-color: #f7f7 !important;
+	color: #ffffff;
+}
+
+option.line2 {
+	background-color: #f7f7f7!important;
+	color: #ffff00;
+}
+.containerHeight1{
+  min-height: 50vh;
+}
+.greenColor{
+  color:#009e73;
+}
+.redColor{
+  color:#d94040;
+}
+.textAlign{
+  text-align: right !important;
+}

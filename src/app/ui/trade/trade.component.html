@@ -1,0 +1,457 @@
+<header>
+    <app-nav></app-nav>
+</header>
+<section>
+  <div class="container-fluid mt-8">
+    <div class="row">
+      <!-------------- Coin Pair -------------------------->
+      <div class="col-md-3">
+         <div class="card">
+              <div class="row containerPadding">
+                <div class="col-md-2 col-sm-2 text-center backgroundCrypt">
+                  BTC
+                </div>
+                <div class="col-md-2 col-sm-2 text-center backgroundCrypt">
+                  ETH
+                </div>
+                <div class="col-md-2 col-sm-2 text-center backgroundCrypt">
+                  BCH
+                </div>
+                <div class="col-md-2 col-sm-2 text-center backgroundCrypt">
+                  LTC
+                </div>
+                <div class="col-md-4 col-sm-4 text-center backgroundCryp">
+                    <input type="text" id="exampleForm2"  placeholder="Search" class="form-control form-control1">
+                </div>
+              </div>
+    
+              <div class="row">
+                <div class="col-md-12 col-sm-12">
+                 <div class="table-responsive">
+                  <table class="table  table-striped" *ngIf="users">
+                      <thead>
+                        <tr>
+                          <th scope="col">Coin</th>
+                          <th scope="col">Price</th>
+                          <th scope="col">Volume</th>
+                          <th scope="col">Change</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let trade of users">
+                            <td>{{trade.symbol}}</td>
+                            <td>{{trade.symbol}}</td>
+                            <td>${{trade.price_usd}}</td>
+                            <td [ngClass]="{'greenColor':trade.percent_change_24h>0,'redColor':trade.percent_change_24h<0}">{{ trade.percent_change_24h}}</td>  
+                        </tr>
+                      </tbody>
+                    </table>
+                 </div>
+                </div>
+            </div>
+          </div>
+       </div>
+      <div class="col-md-6">
+          <!-- TradingView Widget BEGIN -->
+          <div id="myWidgetContainer">
+            </div>
+       </div>
+      <div class="col-md-3">
+        <div class="container">
+          <div class="card">
+              <div class="row containerPadding">
+                  <div class="col-md-6 col-sm-6 text-center backgroundCrypt" (click)="marketing('history')"
+                  [ngClass]="{'tab1':history==true,'tab2':market== false}">
+                      HISTORY
+                  </div>
+                  <div class="col-md-6 col-sm-6 text-center backgroundCrypt" (click)="marketing('currentMarket')"
+                  [ngClass]="{'tab1':history==false,'tab2':currentMarket== true}">
+                    MARKET TRENDING
+                  </div>
+              </div>
+              <div class="row" *ngIf="history">
+                <div class="col-md-12 col-sm-12">
+                    <div class="table-responsive">
+                     <table class="table table-striped" *ngIf="cryptoReq">
+                        <thead>
+                            <tr>
+                            <th scope="col">Time</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Volume</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let trade2 of  cryptoReq">  
+                                <td>{{trade2.symbol}}</td>
+                                <td>${{trade2.price_usd}}</td>
+                                <td [ngClass]="{'greenColor':trade2.percent_change_24h>0,'redColor':trade2.percent_change_24h<0}">{{ trade2.percent_change_24h}}</td>  
+                        
+                            </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                 </div>
+                </div>
+                <div class="row" *ngIf="currentMarket">
+                  <div class="col-md-12 col-sm-12">
+                    <div class="table-responsive">
+                        <table class="table table-striped" *ngIf="cryptoReq">
+                            <thead>
+                            <tr>
+                                <th scope="col">Time</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Volume</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let trade2 of  cryptoReq">  
+                                <td>{{trade2.name}}</td>
+                                <td>${{trade2.price_usd}}</td>
+                                <td [ngClass]="{'greenColor':trade2.percent_change_24h>0,'redColor':trade2.percent_change_24h<0}">{{ trade2.percent_change_24h}}</td>  
+                        
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                  </div>
+                </div>
+           </div>
+        </div>
+        <div class="container mt-3">
+          <div class="card">
+            <div class="row containerPadding">
+                <div class="col-md-12 col-sm-12 backgroundCrypt">
+                    Order
+                </div>
+            </div>
+          
+              <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="table-responsive">
+                        <table class="table table-striped" *ngIf="cryptoReq">
+                            <thead>
+                            <tr>
+                                <th scope="col">Time</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Volume</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let trade2 of  cryptoReq">  
+                                <td>{{trade2.symbol}}</td>
+                                <td>${{trade2.price_usd}}</td>
+                                <td [ngClass]="{'greenColor':trade2.percent_change_24h>0,'redColor':trade2.percent_change_24h<0}">{{ trade2.percent_change_24h}}</td>  
+                        
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+              </div>
+           </div>
+        </div>
+       </div>
+    </div>
+  </div>
+</section>
+<section>
+    <div class="container-fluid mt-3 mb-3">
+      <div class="row">
+        <div class="col-md-6">
+           <div class="card">
+              <div class="row containerPadding">
+                  <div class="col-md-2 backgroundCrypt text-center"  (click)="orderOption('activeOrder')"
+                  [ngClass]="{'tab1':activeOrder==true,'tab2':closedOrder== false}">ACTIVE ORDER</div>
+                  <div class="col-md-2 backgroundCrypt text-center"  (click)="orderOption('closedOrder')"
+                  [ngClass]="{'tab1':activeOrder==false,'tab2':closedOrder== true}">CLOSED ORDER</div>
+                  <div class="col-md-8 backgroundCry"></div>
+              </div>
+            
+                  <div class="row"  *ngIf="activeOrder;"> 
+                    <div class="col-md-12 col-sm-12">
+                       <div class="table-responsive">
+                        <table class="table table-striped" *ngIf="users">
+                            <thead>
+                                <tr>
+                                <th scope="col">Time</th>
+                                <th scope="col">Buy/Sell</th>
+                                <th scope="col">Price BTC</th>
+                                <th scope="col">Amount BPS</th>
+                                <th scope="col">Dealt BPS</th>
+                                <th scope="col">Operation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let trade of users">                         
+                                    <td>{{trade.last_updated}}</td>
+                                    <td>{{trade.symbol}}</td>
+                                    <td>${{trade.price_usd}}</td>
+                                    <td [ngClass]="{'greenColor':trade.percent_change_24h>0,'redColor':trade.percent_change_24h<0}">{{ trade.percent_change_24h}}</td>  
+                                    <td>{{ trade['24h_volume_usd']}}</td>
+                                    <td>{{trade.percent_change_7d}}</td>
+                                </tr>
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="row" *ngIf="closedOrder;">
+                    <div class="col-md-12 col-sm-12">
+                     <div class="table-responsive">
+                      <table class="table table-striped" *ngIf="users">
+                          <thead>
+                            <tr>
+                              <th scope="col">Time</th>
+                              <th scope="col">Buy/Sell</th>
+                              <th scope="col">Price BTC</th>
+                              <th scope="col">Amount BPS</th>
+                              <th scope="col">Dealt BPS</th>
+                              <th scope="col">Operation</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let trade of users">                         
+                                <td>{{trade.last_updated}}</td>
+                                <td>{{trade.name}}</td>
+                                <td>${{trade.price_usd}}</td>
+                                <td [ngClass]="{'greenColor':trade.percent_change_24h>0,'redColor':trade.percent_change_24h<0}">{{ trade.percent_change_24h}}</td>  
+                                <td>{{ trade['24h_volume_usd']}}</td>
+                                <td>{{trade.percent_change_7d}}</td>
+                              </tr>
+                          </tbody>
+                        </table>
+                        </div>
+                    </div>
+                  </div>
+               </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card" >   
+            <div class="row containerPadding">
+              <div class="col-md-2 backgroundCrypt text-center" (click)="tradeOption('limit')"
+              [ngClass]="{'tab3':stopLimit==false,'tab2':market== false,'tab1':limit== true}">LIMIT</div>
+              <div class="col-md-2 backgroundCrypt text-center" (click)="tradeOption('market')"
+              [ngClass]="{'tab2':stopLimit==false,'tab1':market== true,'tab3':limit== false}">MARKET</div>
+              <div class="col-md-2 backgroundCrypt text-center" (click)="tradeOption('stopLimit')"
+              [ngClass]="{'tab1':stopLimit==true,'tab2':market== false,'tab3':limit== false}">STOP-LIMIT</div>
+              <div class="col-md-6 backgroundCry"></div>
+            </div>
+            <div class="row  imp" *ngIf="limit;">
+                <div class="col-md-6">
+                    <p class="text-left headfontx">BUY BTC</p>
+                    <div class="input-group">
+                        <div class="custom-file ">
+                                <input type="number" placeholder="Price" id="exampleForm2" class="form-control">
+                        </div>
+                    </div>
+                    <div class="input-group mt-2">
+                        <div class="custom-file">
+                                <input type="number" placeholder="Amount" id="exampleForm2" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <table class="table">
+                                  <tr class="hideBorder">
+                                    <td><span class="spanColor">25%</span></td>
+                                    <td><span class="spanColor">50%</span></td>
+                                    <td><span class="spanColor">75%</span></td>
+                                    <td><span class="spanColor">100%</span></td>
+                                  </tr>
+                            </table>
+                            <p class="mb-0 mt-2">Total <span class="floatRight"> 1 BTC</span></p>
+                            <p>Fee <span class="floatRight"> 1 BTC </span></p>
+                        </div>
+                        <div class="col-md-12">
+                            <p class="mb-0">Estimated Best Price <span class="floatRight"> 1 BTC</span></p>
+                            <p>Fee <span class="floatRight"> 1 BTC</span></p>
+                            <input mdbBtn color="success"  rounded="true" block="true" class="my-4 waves-effect z-depth-0" mdbWavesEffect
+                            type="submit" value="SELL">
+                        </div>
+                    </div>                                         
+                </div>
+                <div class="col-md-6 vl">
+                    <p class="text-left headfontx">Sell BTC</p>
+                    <div class="input-group">
+                      <div class="custom-file">
+                              <input type="number" placeholder="Price" id="exampleForm2" class="form-control">
+                      </div>
+                    </div>
+                    <div class="input-group mt-2">
+                        <div class="custom-file">
+                                <input type="number" placeholder="Amount" id="exampleForm2" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <table class="table">
+                                <tr class="hideBorder">
+                                  <td><span class="spanColor">25%</span></td>
+                                  <td><span class="spanColor">50%</span></td>
+                                  <td><span class="spanColor">75%</span></td>
+                                  <td><span class="spanColor">100%</span></td>
+                                </tr>
+                          </table>
+                            <p class="mb-0">Total <span class="floatRight"> 22 ETH</span></p>
+                            <p>Fee <span class="floatRight"> 22 ETH</span></p>
+                        </div>
+                        <div class="col-md-12">
+                            <p class="mb-0">Estimated Best Price <span class="floatRight"> 1 BTC</span></p>
+                            <p>Fee <span class="floatRight"> 1 BTC</span></p>
+                            <input mdbBtn color="danger"  rounded="true" block="true" class="my-4 waves-effect z-depth-0" mdbWavesEffect
+                            type="submit" value="SELL">
+                        </div>
+                    </div>                                         
+                </div>
+              </div>
+              <div class="row imp" *ngIf="market;">
+                <div class="col-md-6">
+                    <p class="text-left headfontx">BUY BTC</p>
+                    <div class="input-group">
+                        <div class="custom-file ">
+                                <input type="number" placeholder="Price" id="exampleForm2" class="form-control" placeholder="Market">
+                        </div>
+                    </div>
+                    <div class="input-group mt-2">
+                        <div class="custom-file">
+                                <input type="number" placeholder="Amount" id="exampleForm2" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <table class="table">
+                                  <tr class="hideBorder">
+                                    <td><span class="spanColor">25%</span></td>
+                                    <td><span class="spanColor">50%</span></td>
+                                    <td><span class="spanColor">75%</span></td>
+                                    <td><span class="spanColor">100%</span></td>
+                                  </tr>
+                            </table>
+                            <p class="mb-0 mt-2">Total <span class="floatRight"> 1 BTC</span></p>
+                            <p>Fee <span class="floatRight"> 1 BTC </span></p>
+                        </div>
+                        <div class="col-md-12">
+                            <p class="mb-0">Estimated Best Price <span class="floatRight"> 1 BTC</span></p>
+                            <p>Fee <span class="floatRight"> 1 BTC</span></p>
+                            <input mdbBtn color="success"  rounded="true" block="true" class="my-4 waves-effect z-depth-0" mdbWavesEffect
+                            type="submit" value="SELL">
+                        </div>
+                    </div>                                         
+                </div>
+                <div class="col-md-6 vl">
+                    <p class="text-left headfontx">Sell BTC</p>
+                    <div class="input-group">
+                      <div class="custom-file">
+                              <input type="number" placeholder="Price" id="exampleForm2" class="form-control">
+                      </div>
+                    </div>
+                    <div class="input-group mt-2">
+                        <div class="custom-file">
+                                <input type="number" placeholder="Amount" id="exampleForm2" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <table class="table">
+                                <tr class="hideBorder">
+                                  <td><span class="spanColor">25%</span></td>
+                                  <td><span class="spanColor">50%</span></td>
+                                  <td><span class="spanColor">75%</span></td>
+                                  <td><span class="spanColor">100%</span></td>
+                                </tr>
+                          </table>
+                            <p class="mb-0">Total <span class="floatRight"> 22 ETH</span></p>
+                            <p>Fee <span class="floatRight"> 22 ETH</span></p>
+                        </div>
+                        <div class="col-md-12">
+                            <p class="mb-0">Estimated Best Price <span class="floatRight"> 1 BTC</span></p>
+                            <p>Fee <span class="floatRight"> 1 BTC</span></p>
+                            <input mdbBtn color="danger"  rounded="true" block="true" class="my-4 waves-effect z-depth-0" mdbWavesEffect
+                            type="submit" value="SELL">
+                        </div>
+                    </div>                                         
+                </div>
+              </div>
+              <div class="row imp" *ngIf="stopLimit">
+                <div class="col-md-6">
+                    <p class="text-left headfontx">BUY BTC</p>
+                    <div class="input-group">
+                        <div class="custom-file ">
+                                <input type="number" placeholder="Price" id="exampleForm2" class="form-control">
+                        </div>
+                    </div>
+                    <div class="input-group mt-2">
+                        <div class="custom-file">
+                                <input type="number" placeholder="Amount" id="exampleForm2" class="form-control">
+                        </div>
+                    </div>
+                    <div class="input-group mt-2">
+                        <div class="custom-file">
+                                <input type="number" placeholder="Amount" id="exampleForm2" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <table class="table">
+                                  <tr class="hideBorder">
+                                    <td><span class="spanColor">25%</span></td>
+                                    <td><span class="spanColor">50%</span></td>
+                                    <td><span class="spanColor">75%</span></td>
+                                    <td><span class="spanColor">100%</span></td>
+                                  </tr>
+                            </table>
+                            <p class="mb-0 mt-2">Total <span class="floatRight"> 1 BTC</span></p>
+                            <p>Fee <span class="floatRight"> 1 BTC </span></p>
+                        </div>
+                        <div class="col-md-12">
+                            <p class="mb-0">Estimated Best Price <span class="floatRight"> 1 BTC</span></p>
+                            <p>Fee <span class="floatRight"> 1 BTC</span></p>
+                            <input mdbBtn color="success"  rounded="true" block="true" class="my-4 waves-effect z-depth-0" mdbWavesEffect
+                            type="submit" value="SELL">
+                        </div>
+                    </div>                                         
+                </div>
+                <div class="col-md-6 vl">
+                    <p class="text-left headfontx">Sell BTC</p>
+                    <div class="input-group">
+                      <div class="custom-file">
+                              <input type="number" placeholder="Price" id="exampleForm2" class="form-control">
+                      </div>
+                    </div>
+                    <div class="input-group mt-2">
+                        <div class="custom-file">
+                                <input type="number" placeholder="Amount" id="exampleForm2" class="form-control">
+                        </div>
+                    </div>
+                    <div class="input-group mt-2">
+                        <div class="custom-file">
+                                <input type="number" placeholder="Amount" id="exampleForm2" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <table class="table">
+                                <tr class="hideBorder">
+                                  <td><span class="spanColor">25%</span></td>
+                                  <td><span class="spanColor">50%</span></td>
+                                  <td><span class="spanColor">75%</span></td>
+                                  <td><span class="spanColor">100%</span></td>
+                                </tr>
+                          </table>
+                            <p class="mb-0">Total <span class="floatRight"> 22 ETH</span></p>
+                            <p>Fee <span class="floatRight"> 22 ETH</span></p>
+                        </div>
+                        <div class="col-md-12">
+                            <p class="mb-0">Estimated Best Price <span class="floatRight"> 1 BTC</span></p>
+                            <p>Fee <span class="floatRight"> 1 BTC</span></p>
+                            <input mdbBtn color="danger"  rounded="true" block="true" class="my-4 waves-effect z-depth-0" mdbWavesEffect
+                            type="submit" value="SELL">
+                        </div>
+                    </div>                                         
+                </div>
+              </div>
+             </div>
+         </div>
+      </div>
+    </div>
+  </section>

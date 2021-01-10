@@ -1,0 +1,29 @@
+.top-nav-collapse {
+    background-color: #0E1A42 !important;
+  }
+  
+  .navbar:not(.top-nav-collapse) {
+    background: transparent !important;
+  }
+  
+  @media (max-width: 991px) {
+    .navbar:not(.top-nav-collapse) {
+      background: #0E1A42 !important;
+    }
+  }
+  .headerFont{
+      font-size: 24px;
+      font-weight: 600;
+      color:#555555;
+  }
+  .textFont{
+    font-size: 16px;
+    color:#444444;
+}
+.textFont2{
+    font-size: 16px;
+    color:#777777;
+}
+.boldFont{
+    font-weight: bold;
+}

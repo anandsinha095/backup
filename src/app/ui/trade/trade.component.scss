@@ -1,0 +1,86 @@
+.table.table th, table.table td{
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+.greenColor{
+    color:#009e73;
+}
+.redColor{
+    color:#d94040;
+}
+.spanColor{
+    border: 1px solid #d7d4d4;
+    padding: 2px 2px 2px 2px;
+}
+.table th, .table td{
+    border-top:none!important;
+}
+.headfontx{
+    color:#444444;
+    font-size:14px;
+  }
+  .headfont2{
+    color:#777777;
+    font-size:14px;
+  }
+  .headBackground{
+    background: #EEEEEE;
+  }
+  .containerPadding{
+    margin-left: 0px !important;
+
+    margin-right: 0px!important;
+  }
+  .backgroundCrypt{
+    background:#ECF5FE;
+    padding: 5px 5px 5px 5px;
+    cursor: pointer;
+  }
+  .backgroundCry{
+    background:#ECF5FE;
+    padding: 5px 5px 5px 5px;
+  }
+  .backgroundCryp{
+    background:#ECF5FE;
+    cursor: pointer;
+  }
+  .form-control1 {
+    height: 25px !important;
+    margin-top: 3px;
+}
+.card{
+    box-shadow: none;
+    border: .3px solid #d5d5dd;
+}
+.table{
+    margin-bottom:0px !important;
+}
+.vl {
+    border-left: 6px solid #EEEEEE;
+    height: 350px;
+  }
+  .mt-8 {
+    margin-top: 6%;
+}
+.tab1{
+    background: #fff!important;
+    border-top: #1A73E8 2px solid;
+    cursor: pointer;
+  }
+  .tab2{
+    background:#ECF5FE;
+    cursor: pointer;
+  }
+  .tab3{
+    background:#ECF5FE;
+    cursor: pointer;
+  }
+.imp{
+    padding: 10px 40px 20px 40px; 
+}
+@media (max-width: 1440px) {
+.mt-8{
+  margin-top: 9%;
+}
+
+}

@@ -1,0 +1,333 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+html {
+    position: relative;
+    height: 100%;
+}
+
+
+body {
+  background: #F1F1F1   ;
+  //font-family: 'MyWebFont', Fallback, sans-serif !important;
+  font-family: "adobe-clean", sans-serif !important;
+  margin: 0;
+  //overflow-x: hidden;
+  height: 100%;
+  font-weight: 500;
+  font-size: 14px;
+  color: #847577;
+    
+    .card1{
+        border: 0 !important;
+        font-weight: 400!important;
+        background: #fff;
+        padding: 10px 40px 20px 40px;
+    }
+    .mt-x{
+      margin-top:15%;
+    }
+    .mt-reg{
+      margin-top:10%;
+    }
+    .mt-for{
+      margin-top:20%;
+    }
+    #intro-section
+     {
+      height: 70vh !important;
+    }
+    @media (max-width: 1392px) {
+      .mt-x{
+        margin-top:7% ;
+      }
+      .mt-reg{
+        margin-top:2%;
+      }
+      .mt-for{
+        margin-top:12%;
+      }     
+      .carousel{
+        margin-top: -16% !important;
+      } 
+    }
+    @media (max-width: 1176px) {
+      html,
+      body,
+      header,
+      #intro-section {    
+        min-height: 4vh!important;
+      }
+      .ml-3{
+        margin-left: 0px !important;
+        font-size: 14px;
+      }
+      .fontReq{
+        font-size: 14px!important;
+      }
+      .mt-x{
+        margin-top:7%;
+      }
+    }
+    @media (max-width: 992px) {
+      html,
+      body,
+      header,
+      #intro-section {
+        min-height: 4vh!important;
+      }
+      .ml-3{
+        margin-left: 0px !important;
+        font-size: 14px;
+      }
+      .navbar:not(.top-nav-collapse) {
+        background: #0E1A42 !important;
+      }
+      .ml-5{
+        margin-left: 0px !important;
+      }
+      .mt-x{
+        margin-top:7%;
+      }
+    }
+    @media (max-width: 740px) {
+      html,
+      body,
+      header,
+      #intro-section {
+        min-height: 100vh;
+      }
+      .ml-3{
+        margin-left: 0px !important;
+      }
+      .top-nav-collapse {
+        background-color: #0E1A42 !important;
+      }
+      .floatRight{
+        float:left;
+      }
+    }
+    @media (max-width: 470px) {
+      .mt-9{
+        margin-top:18%;
+      }
+      .floatRight{
+        float:left;
+      }
+      
+    }
+    
+    .top-nav-collapse {
+        background-color: #0E1A42 !important;
+      }
+      
+      .navbar:not(.top-nav-collapse) {
+        background:#000E2D !important;
+      }
+      
+      
+    .rgba-gradient {
+        background:#000E2D;
+        background-image: url(assets/images/back2.png); 
+        background-repeat: no-repeat;
+        background-size: 100%;
+      }
+      
+      .view.mask {
+        overflow: auto !important;
+      }
+      .carousel{
+        margin-top: -20%;
+      }
+      .backgroundSection2{
+        background-image: url(assets/images/backnext.png); 
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+    .backgroundSection3{
+      background-image: url(assets/images/back3.png); 
+      background-repeat: no-repeat;
+      background-size: 100%;
+      padding-top: 9em;
+    padding-bottom: 5em;
+    
+    }
+    .backgroundSectionMail{
+      background-image: url(assets/images/back2.png); 
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
+    .iconColor{
+      color:red;
+      font-size:16px;
+    }
+    .requiredFont{
+    font-size:12px!important;
+    }
+    .headfont{
+      color:#444444;
+      font-size:16px;
+    }
+    .fontRequied{
+      color:#777777;
+    }
+    .btc{
+      background: #F7931A;
+      border-radius: 4px;
+      padding: 25px 20px 15px 20px;
+    }
+    .eth{
+      background: #313640;
+      border-radius: 4px;
+      padding: 25px 20px 15px 20px;
+    }
+    .bch{
+      background: #32D82C;
+      border-radius: 4px;
+      padding: 25px 20px 15px 20px;
+    }
+    .ltc{
+      background: #05057d;
+      border-radius: 4px;
+      padding: 25px 20px 15px 20px;
+    }
+    
+    height: 100%;
+    font-weight: 500;
+    font-size: 14px;
+    color: #847577
+}
+.card1{
+    border: 0 !important;
+    font-weight: 400!important;
+    background: #fff;
+    padding: 10px 40px 20px 40px;
+}
+
+#intro-section
+ {
+  height: 70vh !important;
+}
+
+
+.top-nav-collapse {
+    background-color: #0E1A42 !important;
+  }
+  
+  .navbar:not(.top-nav-collapse) {
+    background:#000E2D !important;
+  }
+  
+ 
+.rgba-gradient {
+    background:#000E2D;
+    background-image: url(assets/images/back2.png); 
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+  
+  .view.mask {
+    overflow: auto !important;
+  }
+  .carousel{
+    margin-top: -20%;
+  }
+  .backgroundSection2{
+    background-image: url(assets/images/backnext.png); 
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.backgroundSection3{
+  background-image: url(assets/images/back3.png); 
+  background-repeat: no-repeat;
+  background-size: 100%;
+  padding-top: 9em;
+padding-bottom: 5em;
+
+}
+.backgroundSectionMail{
+  background-image: url(assets/images/back2.png); 
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+.iconColor{
+  color:red;
+  font-size:16px;
+}
+.requiredFont{
+font-size:12px!important;
+}
+.headfont{
+  color:#444444;
+  font-size:16px;
+}
+.fontRequied{
+  color:#777777;
+}
+.btc{
+  background: #F7931A;
+  border-radius: 4px;
+  padding: 25px 20px 15px 20px;
+}
+.eth{
+  background: #313640;
+  border-radius: 4px;
+  padding: 25px 20px 15px 20px;
+}
+.bch{
+  background: #32D82C;
+  border-radius: 4px;
+  padding: 25px 20px 15px 20px;
+}
+.ltc{
+  background: #05057d;
+  border-radius: 4px;
+  padding: 25px 20px 15px 20px;
+}
+.mt-9{
+  margin-top:9%;
+}
+.floatRight{
+  float:right;
+}
+.floatLeft{
+  float:left;
+}
+.blueFont{
+  color:#1A73E8;
+cursor: pointer;
+}
+.warningBackground{
+  background: #F6FAFF;;
+}
+.warningContainerBackground{
+  background: #fff;
+}
+.boxRadius{
+  border-radius: 7px 7px 7px 7px !important;
+}
+.boxShadow{
+  box-shadow: 0px 0px 10px 0px #dbd6d6;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.fullwidth{
+  width:100%
+}
+.matMargin{
+margin-top: -15px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+.cdk-global-overlay-wrapper, .cdk-overlay-container {
+  z-index: 99999 !important;
+}

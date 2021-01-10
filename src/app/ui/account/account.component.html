@@ -1,0 +1,1728 @@
+<header>
+    <app-nav></app-nav>
+</header>
+<section>
+    <div class="container-fluid" style="background:#fff;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 mt-9">
+                    <p class="mb-1"> Total balance</p>
+                    <h6 class="headfont">$2567 USD</h6>
+
+                </div>
+                <div class="col-md-3 mt-9">
+                    <p class="text-left mb-1"> Available Balance</p>
+                    <h6 class="text-left headfont2">$2567 USD</h6>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-2 mt-9">
+                    <p class="text-left mb-1"> In Order</p>
+                    <h6 class="text-left headfont3">$2567 USD</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container white boxShadow boxRadius">
+        <div class="row mt-5 containerPadding">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="assets/images/avatar-1.jpg" class="rounded float-left">
+                    </div>
+                    <div class="col-md-9">
+                        <h5 class="headfont">{{userFirstName}} {{userLastName}}</h5>
+                        <!-- <p>p****@g****.com</p> -->
+                        <p>{{userEmail}}</p>
+                        <button type="button" id="shadow" *ngIf="kycStatusApply!=4"
+                            class="btn btn-light btn-rounded waves-effect waves-light btn-sm">Unverified</button>
+                        <button type="button" id="shadow" *ngIf="kycStatusApply==4"
+                            class="btn btn-primary btn-rounded waves-effect waves-light btn-sm">Verified</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <ul class="stepper stepper-horizontal stepper2" id="stepper1">
+
+                    <!-- First Step -->
+                    <li class="completed">
+                        <a href="#!">
+                            <span class="circle"><i class="fa fa-circle"></i></span>
+                        </a>
+                    </li>
+
+
+                    <!-- Second Step -->
+                    <li class="active">
+                        <a href="#!">
+                            <span class="circle"><i class="fa fa-circle"></i></span>
+
+                        </a>
+                    </li>
+
+                    <!-- Third Step -->
+                    <li class="primary">
+                        <a href="#!">
+                            <span class="circle"><i class="fa fa-circle"></i></span>
+
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <p class="text-left">Using RPS to pay for fee (25% discount)
+                    <!-- Switch -->
+                    <span>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+
+                        </label>
+                    </span>
+                </p>
+
+            </div>
+            <div class="col-md-6">
+                <p class="text-right">24 Hours withdrawal limit: 2 BTC ( <a href="#">Increase Limit</a> )</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container mt-3 mb-3 white boxShadow boxRadius">
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <div class="card1 mt-3">
+                    <!---------------@@@@@@@ change Password @@@@@@@@----------------->
+                    <p class="itemHead">Account Security</p>
+                    <div class="container containerSetting mt-1 mb-1">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p class="mb-1 itemText">Account Password</p>
+                                <p class="mb-0">Used for account login.
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" class="btn btn-outline-primary btn-md transferCoin rshadow"
+                                    (click)="changePasswordModal()">Change</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!---------------@@@@@@@ KYC @@@@@@@@----------------->
+                    <div class="container containerSetting1 mt-1 mb-1">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p class="mb-1 itemText">KYC Verification</p>
+                                <p class="mb-0">Please complete the KYC information to increase the transaction limit.
+                                </p>
+                            </div>
+                            <div class="col-md-4" *ngIf="kycStatusApply!=4">
+                                <button type="button" class="btn btn-outline-primary btn-md transferCoin rshadow"
+                                    data-toggle="modal" data-target="#kycActiveStatus" (click)="kycActiveStatus()"
+                                    mdbWavesEffect>Update</button>
+                            </div>
+                            <div class="col-md-4" *ngIf="kycStatusApply==4">
+                                <button type="button" class="btn btn-primary btn-md transferCoin mt-3 rshadow"
+                                    mdbWavesEffect>Verified</button>
+                            </div>
+                            <div class="col-md-4" *ngIf="kycStatusApply==3">
+                                <button type="button" class="btn btn-outline-primary btn-md transferCoin rshadow"
+                                    data-toggle="modal" data-target="#kycActiveStatus" (click)="kycActiveStatus()"
+                                    mdbWavesEffect>Update</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!---------------@@@@@@@ 2FA authentication @@@@@@@@----------------->
+                    <div class="container containerSetting mt-1 mb-1">
+                        <p class="mb-1 itemText">2 Factor Authentication</p>
+                        <div class="row ">
+                            <div class="col-md-6">
+                                <img src="assets/icons/gauth.png" class="mt-2" alt="...">
+                                <p class="itemText mt-1">Google Authentication</p>
+                                <p class="">Used for the verification in account login, withdrawal, API creation, etc.
+                                    and could switch to the SMS verification mode freely (vise versa).</p>
+                                <label class="switch" *ngIf="!checked">
+                                    <input type="checkbox" (click)="gauthentication($event)">
+                                    <span class="slider round"></span>
+                                </label>
+                                <label class="switch" *ngIf="checked">
+                                    <input type="checkbox" (click)="gauthentication($event)" checked>
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <div class="col-md-6">
+                                <img src="assets/icons/phone.svg" class="mt-2" alt="...">
+                                <p class="itemText mt-1">SMS Authentication</p>
+                                <p class="">Used for the verification in account login, withdrawal, API creation, etc.
+                                    and could switch to the Google verification mode freely (vice versa).</p>
+                                <label class="switch" *ngIf="!checkedsms">
+                                    <input type="checkbox" (click)="smsauth($event)">
+                                    <span class="slider round"></span>
+                                </label>
+                                <label class="switch" *ngIf="checkedsms">
+                                    <input type="checkbox" (click)="smsauth($event)" checked>
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!--- Security Questions -->
+                    <div class="container containerSetting1 mt-1 mb-1">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p class="mb-1 itemText">Security Questions</p>
+                                <p class="mb-0">Used for the verification in Account unlocking, withdrawal, API
+                                    creation, etc.
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" class="btn btn-outline-primary btn-md transferCoin rshadow"
+                                    (click)="securityQuestionModal()">Change</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!---Anti-Phishing Code  -->
+                    <div class="container containerSetting mt-1 mb-1">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p class="mb-1 itemText">Anti-Phishing Code</p>
+                                <p class="mb-0">By verifying your Anti-Phishing Code, you will be able to prevent
+                                    phishing attempts from fake Ciferchange websites or email addresses.</p>
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" class="btn btn-primary btn-md transferCoin mt-3 rshadow"
+                                    (click)="antifishing()" *ngIf="!antiPhishingStatus">Enable</button>
+                                <button type="button" class="btn btn-outline-primary btn-md transferCoin rshadow"
+                                    (click)="antifishing()" *ngIf="antiPhishingStatus">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!---------------@@@@@@@  Second Password @@@@@@@@----------------->
+                    <div class="container containerSetting1 mt-1 mb-1">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p class="mb-1 itemText">Transaction Password</p>
+                                <p class="mb-0">Used for the verification in transaction, withdrawal, API creation, etc.
+                                    Please ensure the strength of the password and well keep it.</p>
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" *ngIf="!secondPasswordStatus"
+                                    class="btn btn-primary btn-md transferCoin rshadow"
+                                    (click)="secondPasswordModal()">Enable</button>
+                                <div *ngIf="secondPasswordStatus">
+                                    <button type="button" class="btn btn-primary btn-md transferCoin rshadow"
+                                        (click)="secondPasswordDisableModal()">Disable</button>
+                                    <button type="button" class="btn btn-outline-primary btn-md transferCoin rshadow"
+                                        (click)="secondPasswordChangeModal()">Change</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!---------------@@@@@@@ change Password modal @@@@@@@@----------------->
+                    <div mdbModal #framex="mdbModal" class="modal fade" id="changePassword" tabindex="-1" role="dialog"
+                        aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-md modal-dialog-centered" role="document">
+                            <!--Content-->
+                            <div class="modal-content text-center boxRadius">
+                                <!--Body-->
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12 text-center">
+                                                <img src="assets/icons/changePsw.svg">
+                                                <h5 class="mt-2">Change Password</h5>
+                                            </div>
+                                            <button type="button" class="close pull-right" aria-label="Close"
+                                                (click)="framex.hide()">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                            <form [formGroup]="changePasswordForm" (ngSubmit)="changePasswordSubmit()">
+                                                <mat-form-field appearance="outline" class="fullwidth">
+                                                    <mat-label>Current Password</mat-label>
+                                                    <input matInput type="password"
+                                                        [formControl]="changePasswordForm.controls.oldPassword"
+                                                        #ow><span class="fa field-icon"
+                                                        (click)="ow.type=ow.type=='password'?'text':'password'"
+                                                        [ngClass]=" {'fa-eye-slash ': ow.type === 'password','fa-eye': ow.type === 'text'}"></span>
+                                                </mat-form-field>
+                                                <div *ngIf="changePasswordForm.controls.oldPassword.errors && (changePasswordForm.controls.oldPassword.dirty || changePasswordForm.controls.oldPassword.touched)"
+                                                    class="error matMargin">
+                                                    <div
+                                                        [hidden]="!changePasswordForm.controls.oldPassword.errors.required">
+                                                        Please enter your current password
+                                                    </div>
+                                                    <div
+                                                        [hidden]="!changePasswordForm.controls.oldPassword.errors.minlength">
+                                                        Invalid Password
+                                                    </div>
+                                                    <div
+                                                        [hidden]="!changePasswordForm.controls.oldPassword.errors.maxlength">
+                                                        Invalid Passwordss.
+                                                    </div>
+                                                </div>
+                                                <mat-form-field appearance="outline" class="fullwidth">
+                                                    <mat-label>New Password</mat-label>
+                                                    <input matInput type="password"
+                                                        [formControl]="changePasswordForm.controls.newPassword" #d
+                                                        maxlength="16"><span class="fa field-icon"
+                                                        (click)="d.type=d.type=='password'?'text':'password'"
+                                                        [ngClass]=" {'fa-eye-slash ': d.type === 'password','fa-eye': d.type === 'text'}"></span>
+                                                </mat-form-field>
+                                                <div *ngIf="changePasswordForm.controls.newPassword.errors && (changePasswordForm.controls.newPassword.dirty || changePasswordForm.controls.newPassword.touched)"
+                                                    class="error matMargin">
+                                                    <div
+                                                        [hidden]="!changePasswordForm.controls.newPassword.errors.required">
+                                                        Please enter new password
+                                                    </div>
+                                                    <div
+                                                        [hidden]="!changePasswordForm.controls.newPassword.errors.minlength">
+                                                        New Password must be at least 8 characters long.
+                                                    </div>
+                                                    <div
+                                                        [hidden]="!changePasswordForm.controls.newPassword.errors.maxlength">
+                                                        New Password cannot be more than 16 characters long.
+                                                    </div>
+                                                </div>
+                                                <mat-form-field appearance="outline" class="fullwidth">
+                                                    <mat-label>Confirm Password</mat-label>
+                                                    <input matInput type="password"
+                                                        [formControl]="changePasswordForm.controls.confirmPassword" #p
+                                                        maxlength="16"><span class="fa field-icon"
+                                                        (click)="p.type=p.type=='password'?'text':'password'"
+                                                        [ngClass]=" {'fa-eye-slash ': p.type === 'password','fa-eye': p.type === 'text'}"></span>
+                                                </mat-form-field>
+                                                <div *ngIf="changePasswordForm.controls.confirmPassword.errors && (changePasswordForm.controls.confirmPassword.dirty || changePasswordForm.controls.confirmPassword.touched)"
+                                                    class="error matMargin">
+                                                    <div
+                                                        [hidden]="!changePasswordForm.controls.confirmPassword.errors.required">
+                                                        Please confirm your password
+                                                    </div>
+                                                    <div
+                                                        *ngIf="changePasswordForm.get('confirmPassword')?.errors?.notEquivalent">
+                                                        Passwords
+                                                        did not match</div>
+                                                </div>
+                                                <input mdbBtn color="info" rounded="true" block="true"
+                                                    class="my-4 waves-effect z-depth-0" mdbWavesEffect type="submit"
+                                                    value="CONTINUE" [disabled]="!changePasswordForm.valid"
+                                                    [ngClass]=" {'btn-info': changePasswordForm.valid === true,'btn-light': changePasswordForm.valid === false}">
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/.Content-->
+                        </div>
+                    </div>
+                    <!---------------@@@@@@@ change Password End @@@@@@@@----------------->
+
+                    <!------------ @@@@@@@@@ KYC Module @@@@@@@@@@----------------->
+                    <div mdbModal #frameKyc="mdbModal" class="modal fade" id="frameKyc" tabindex="-1" role="dialog"
+                        aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document"
+                            *ngIf="kycStatusApply===1">
+                            <!--Content-->
+                            <div class="modal-content text-center">
+                                <!--Header-->
+                                <div class="modal-body">
+
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-6 text-center">
+                                                <img src="assets/images/indivual.svg">
+                                                <h5>Individual</h5>
+                                                <p>Please complete the KYC information to increase the transaction
+                                                    limit.</p>
+                                                <button type="button" class="btn btn-primary btn-md mt-3 rshadow"
+                                                    routerLink="/account/kyc">Enable</button>
+                                            </div>
+                                            <div class="col-md-6 vl">
+                                                <button type="button" class="close pull-right" aria-label="Close"
+                                                    (click)="frameKyc.hide()">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                                <img src="assets/images/teamwork.svg">
+                                                <h5 class="text-center">Corporate</h5>
+
+                                                <p>Please complete the KYC information to increase the transaction
+                                                    limit.</p>
+                                                <button type="button"
+                                                    class="btn btn-primary btn-md  mt-3 center rshadow"
+                                                    routerLink="/account/kycCorporate">Enable</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/.Content-->
+                        </div>
+                        <div class="modal-dialog modal-md modal-dialog-centered" role="document"
+                            *ngIf="kycStatusApply===2">
+                            <!--Content-->
+                            <div class="modal-content text-center">
+                                <!--Header-->
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <img src="assets/images/pending.png" width=20%>
+                                        <p>You KYC approval is underporcess. Cypherchange will revert back on your mail
+                                            within 48 hours.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-dialog modal-md modal-dialog-centered" role="document"
+                            *ngIf="kycStatusApply===3">
+                            <!--Content-->
+                            <div class="modal-content text-center">
+                                <!--Header-->
+                                <div class="modal-body">
+
+                                    <div class="container">
+                                        <p>You KYC has been rejected by admin due to multiple bad attampt. For any query
+                                            contact to Support</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!---------------@@@@@@@ KYC End  @@@@@@@@----------------->
+
+                    <!---------------@@@@@@@ 2FA authentication @@@@@@@@----------------->
+                    <!-- Google auth  modal -->
+                    <div mdbModal #frame1="mdbModal" class="modal fade" tabindex="-1" role="dialog"
+                        aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="container">
+                            <div class="modal-dialog modal-fluid modal-dialog-centered" role="document">
+                                <!--Content-->
+                                <div class="modal-content boxRadius">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title modelHead" id="myModalLabel">Enable Google
+                                            Authentication</h4>
+                                    </div>
+                                    <button type="button" class="close pull-right" aria-label="Close"
+                                        (click)="frame1.hide()">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+
+                                    <!--Header-->
+                                    <!--Body-->
+                                    <div class="modal-body paddingModel">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p class="modelText"><span class="numberCircle">1</span>
+                                                        Download
+                                                        App</p>
+                                                    <div class="row">
+                                                        <div class="col-md-4"> <img src="assets/images/play.png">
+                                                        </div>
+                                                        <div class="col-md-4"> <img src="assets/images/itune.png">
+                                                        </div>
+                                                    </div>
+                                                    <img src="assets/images/phone.png">
+                                                </div>
+                                                <div class="col-md-6 vl">
+
+                                                    <p class="modelText"><span class="numberCircle">2</span> Scan
+                                                        QR-code:</p>
+                                                    <div class="row">
+                                                        <div class="col-md-5">
+                                                            <img src={{qr}} class=" paddingLeft">
+                                                        </div>
+
+                                                        <div class="col-md-7">
+                                                            <p>2FA backup key:</p>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="input-group">
+                                                                        <div class="custom-file">
+                                                                            <input type="text" id="exampleForm2"
+                                                                                class="form-control backgroundWhite"
+                                                                                value={{qrKey}} #inputTarget readonly>
+                                                                        </div>
+                                                                        <div class="input-group-prepend" title="copy">
+                                                                            <span class="input-group-text"><i
+                                                                                    class="fa fa-files-o colorBlue"
+                                                                                    aria-hidden="true"
+                                                                                    [ngxClipboard]="inputTarget"></i>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <form [formGroup]="gauthForm" (ngSubmit)="gauthSubmit()">
+                                                        <p class="modelText mt-3"><span class="numberCircle">3</span>
+                                                            Enter
+                                                            Cyphertron login password:</p>
+                                                        <div class="row">
+                                                            <div class="col-md-1"></div>
+                                                            <div class="col-md-11">
+                                                                <mat-form-field appearance="outline" class="fullwidth">
+                                                                    <mat-label>Current Password</mat-label>
+                                                                    <input matInput type="password"
+                                                                        [formControl]="gauthForm.controls.password" #x
+                                                                        maxlength="16">
+                                                                    <span class="fa field-icon"
+                                                                        (click)="x.type=x.type=='password'?'text':'password'"
+                                                                        [ngClass]=" {'fa-eye-slash ': x.type === 'password','fa-eye': x.type === 'text'}"></span>
+                                                                </mat-form-field>
+                                                                <div *ngIf="gauthForm.controls.password.errors && (gauthForm.controls.password.dirty || gauthForm.controls.password.touched)"
+                                                                    class="error matMargin">
+                                                                    <div
+                                                                        [hidden]="!gauthForm.controls.password.errors.required">
+                                                                        password is required!
+                                                                    </div>
+                                                                    <div
+                                                                        [hidden]="!gauthForm.controls.password.errors.minlength">
+                                                                        Invalid Password.
+                                                                    </div>
+                                                                    <div
+                                                                        [hidden]="!gauthForm.controls.password.errors.maxlength">
+                                                                        Invalid Password.
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <p class="modelText mt-2"><span class="numberCircle">4</span>
+                                                            Enter
+                                                            2FA code from the app:</p>
+                                                        <div class="row">
+                                                            <div class="col-md-1"></div>
+                                                            <div class="col-md-11">
+                                                                <mat-form-field appearance="outline" class="fullwidth">
+                                                                    <mat-label>Gauth OTP</mat-label>
+                                                                    <input matInput type="number"
+                                                                        [formControl]="gauthForm.controls.gauthCode"
+                                                                        maxlength="6"
+                                                                        (keyup)="onKey($event,'gauthEnable')">
+                                                                </mat-form-field>
+                                                                <div *ngIf="gauthForm.controls.gauthCode.errors && (gauthForm.controls.gauthCode.dirty || gauthForm.controls.gauthCode.touched)"
+                                                                    class="error matMargin">
+                                                                    <div
+                                                                        [hidden]="!gauthForm.controls.gauthCode.errors.required">
+                                                                        Please enter Gauth OTP
+                                                                    </div>
+                                                                    <div
+                                                                        [hidden]="!gauthForm.controls.gauthCode.errors.minlength">
+                                                                        Invalid Authentication code.
+                                                                    </div>
+                                                                    <div
+                                                                        [hidden]="!gauthForm.controls.gauthCode.errors.maxlength">
+                                                                        Invalid Authentication code.
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-1"></div>
+                                                            <div class="col-md-11">
+                                                                <button type="button"
+                                                                    class="btn btn-primary btn-md center rshadow"
+                                                                    type="submit" [disabled]="!gauthForm.valid"
+                                                                    [ngClass]=" {'btn-info': gauthForm.valid === true,'btn-light': gauthForm.valid === false}">Submit</button>
+                                                                <button type="button"
+                                                                    class="btn btn-outline-primary btn-md rshadow"
+                                                                    (click)="frame1.hide()">Cancel</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/.Content-->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- google auth end -->
+                    <!--- gauth disable --->
+                    <div mdbModal #gauthDis="mdbModal" class="modal fade" id="gauthDisable" tabindex="-1" role="dialog"
+                        aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-md modal-dialog-centered" role="document">
+                            <!--Content-->
+                            <div class="modal-content text-center boxRadius">
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12 text-center">
+                                                <img src="assets/icons/changePsw.svg">
+                                                <h5 class="mt-2">Disable Google Authentication</h5>
+                                            </div>
+                                            <button type="button" class="close pull-right" aria-label="Close"
+                                                (click)="gauthDis.hide()">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                            <div class="col-md-12">
+                                                <form [formGroup]="gauthDisableForm" (ngSubmit)="gauthDisableSubmit()">
+                                                    <mat-form-field appearance="outline" class="fullwidth">
+                                                        <mat-label>Current Password</mat-label>
+                                                        <input matInput type="password"
+                                                            [formControl]="gauthDisableForm.controls.oldPassword" #y
+                                                            maxlength="16">
+                                                        <span class="fa field-icon"
+                                                            (click)="y.type=y.type=='password'?'text':'password'"
+                                                            [ngClass]=" {'fa-eye-slash ': y.type === 'password','fa-eye': y.type === 'text'}"></span>
+                                                    </mat-form-field>
+                                                    <div *ngIf="gauthDisableForm.controls.oldPassword.errors && (gauthDisableForm.controls.oldPassword.dirty || gauthDisableForm.controls.oldPassword.touched)"
+                                                        class="error matMargin">
+                                                        <div
+                                                            [hidden]="!gauthDisableForm.controls.oldPassword.errors.required">
+                                                            Please enter your password
+                                                        </div>
+                                                        <div
+                                                            [hidden]="!gauthDisableForm.controls.oldPassword.errors.minlength">
+                                                            Invalid Password.
+                                                        </div>
+                                                        <div
+                                                            [hidden]="!gauthDisableForm.controls.oldPassword.errors.maxlength">
+                                                            Invalid Password.
+                                                        </div>
+                                                    </div>
+                                                    <mat-form-field appearance="outline" class="fullwidth">
+                                                        <mat-label>Gauth OTP</mat-label>
+                                                        <input matInput type="number"
+                                                            [formControl]="gauthDisableForm.controls.gauthOtp"
+                                                            maxlength="6" (keyup)="onKey($event,'gauthDisable')">
+                                                    </mat-form-field>
+                                                    <div *ngIf="gauthDisableForm.controls.gauthOtp.errors && (gauthDisableForm.controls.gauthOtp.dirty || gauthDisableForm.controls.gauthOtp.touched)"
+                                                        class="error matMargin">
+                                                        <div
+                                                            [hidden]="!gauthDisableForm.controls.gauthOtp.errors.required">
+                                                            Authentication code is required
+                                                        </div>
+                                                        <div
+                                                            [hidden]="!gauthDisableForm.controls.gauthOtp.errors.minlength">
+                                                            Invalid Authentication code.
+                                                        </div>
+                                                        <div
+                                                            [hidden]="!gauthDisableForm.controls.gauthOtp.errors.maxlength">
+                                                            Invalid Authentication code.
+                                                        </div>
+                                                    </div>
+                                                    <input mdbBtn color="info" rounded="true" block="true"
+                                                        class="my-4 waves-effect z-depth-0" mdbWavesEffect type="submit"
+                                                        value="CONTINUE" [disabled]="!gauthDisableForm.valid"
+                                                        [ngClass]=" {'btn-info': gauthDisableForm.valid === true,'btn-light': gauthDisableForm.valid === false}">
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/.Content-->
+                        </div>
+                    </div>
+                    <!---- End of gauth --->
+                    <!-- SMS auth  modal -->
+                    <div mdbModal #frameSms="mdbModal" class="modal fade" tabindex="-1" role="dialog"
+                        aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="container">
+                            <div class="modal-dialog modal-fluid modal-dialog-centered" role="document">
+                                <!--Content-->
+                                <div class="modal-content boxRadius">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title modelHead" id="myModalLabel">Enable SMS
+                                            Authentication
+                                        </h4>
+                                    </div>
+                                    <button type="button" class="close pull-right" aria-label="Close"
+                                        (click)="frameSms.hide()">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                    <!--Header-->
+                                    <!--Body-->
+                                    <div class="modal-body paddingModel">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <img src="assets/images/sms.png">
+                                                </div>
+                                                <div class="col-md-6 vl">
+                                                    <form [formGroup]="smsForm" (ngSubmit)="smsSubmit()">
+                                                        <div *ngIf="smsDetails">
+                                                            <p class="modelText mt-3"><span
+                                                                    class="numberCircle">1</span>
+                                                                Enter Mobile Number:</p>
+                                                            <div class="row">
+                                                                <div class="col-md-3">
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-prepend">
+                                                                            <span>
+                                                                                <select
+                                                                                    class="browser-default custom-select"
+                                                                                    [formControl]="smsForm.controls.countryCode">
+                                                                                    <option disabled>code</option>
+                                                                                    <option *ngFor="let i of arr">
+                                                                                        {{i}}
+                                                                                    </option>
+                                                                                </select>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-9">
+                                                                    <mat-form-field appearance="outline"
+                                                                        class="fullwidth">
+                                                                        <mat-label>Phone Number</mat-label>
+                                                                        <input matInput type="number"
+                                                                            [formControl]="smsForm.controls.phoneNumber"
+                                                                            maxlength="16" pattern="\d*">
+                                                                    </mat-form-field>
+                                                                    <div *ngIf="smsForm.controls.phoneNumber.errors && (smsForm.controls.phoneNumber.dirty || smsForm.controls.phoneNumber.touched)"
+                                                                        class="error matMargin">
+                                                                        <div
+                                                                            [hidden]="!smsForm.controls.phoneNumber.errors.required">
+                                                                            Phone Number is required!
+                                                                        </div>
+                                                                        <div
+                                                                            [hidden]="!smsForm.controls.phoneNumber.errors.minlength">
+                                                                            Invalid Phone Number.
+                                                                        </div>
+                                                                        <div
+                                                                            [hidden]="!smsForm.controls.phoneNumber.errors.maxlength">
+                                                                            Invalid Phone Number.
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <p class="modelText mt-4"><span
+                                                                    class="numberCircle">2</span>
+                                                                Enter Cypherchange login password:</p>
+                                                            <div class="row">
+                                                                <div class="col-md-1"></div>
+                                                                <div class="col-md-11">
+                                                                    <mat-form-field appearance="outline"
+                                                                        class="fullwidth">
+                                                                        <mat-label>Current Password</mat-label>
+                                                                        <input matInput type="password"
+                                                                            [formControl]="smsForm.controls.loginPassword"
+                                                                            #yy maxlength="16">
+                                                                        <span class="fa field-icon"
+                                                                            (click)="yy.type=yy.type=='password'?'text':'password'"
+                                                                            [ngClass]=" {'fa-eye-slash ': yy.type === 'password','fa-eye': yy.type === 'text'}"></span>
+                                                                    </mat-form-field>
+                                                                    <div *ngIf="smsForm.controls.loginPassword.errors && (smsForm.controls.loginPassword.dirty || smsForm.controls.loginPassword.touched)"
+                                                                        class="error matMargin">
+                                                                        <div
+                                                                            [hidden]="!smsForm.controls.loginPassword.errors.required">
+                                                                            Please enter your current password
+                                                                        </div>
+                                                                        <div
+                                                                            [hidden]="!smsForm.controls.loginPassword.errors.minlength">
+                                                                            Invalid Password.
+                                                                        </div>
+                                                                        <div
+                                                                            [hidden]="!smsForm.controls.loginPassword.errors.maxlength">
+                                                                            Invalid Password.
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row mt-5">
+                                                                <div class="col-md-1"></div>
+                                                                <div class="col-md-11">
+                                                                    <button type="button"
+                                                                        class="btn btn-primary btn-md center rshadow"
+                                                                        type="submit" [disabled]="!smsForm.valid"
+                                                                        [ngClass]=" {'btn-info': smsForm.valid === true,'btn-light': smsForm.valid === false}">SEND
+                                                                        SMS</button>
+                                                                    <button type="button"
+                                                                        class="btn btn-outline-primary btn-md rshadow"
+                                                                        (click)="frameSms.hide()">Cancel</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                    <form [formGroup]="smsVerifyForm" (ngSubmit)="smsVerifySubmit()">
+                                                        <div *ngIf="!smsDetails">
+                                                            <p class="modelText mt-3"><span
+                                                                    class="numberCircle">3</span>
+                                                                Enter OTP sent on your mobile number:</p>
+                                                            <div class="row">
+                                                                <div class="col-md-1"></div>
+                                                                <div class="col-md-11">
+                                                                    <div class="custom-file">
+                                                                        <input type="text" id="smsOTP"
+                                                                            [formControl]="smsVerifyForm.controls.smsOTP"
+                                                                            class="form-control"
+                                                                            (keyup)="onKey($event,'smsEnable')"
+                                                                            maxlength="6">
+                                                                        <div *ngIf="submitSmsVerify && smsVerifyForm.controls.smsOTP.errors"
+                                                                            class="error">
+                                                                            <div
+                                                                                *ngIf="smsVerifyForm.controls.smsOTP.errors.required">
+                                                                                OTP
+                                                                                is required</div>
+                                                                            <div
+                                                                                *ngIf="smsVerifyForm.controls.smsOTP.errors.maxlength">
+                                                                                Invalid
+                                                                                OTP</div>
+                                                                            <div
+                                                                                *ngIf="smsVerifyForm.controls.smsOTP.errors.minlength">
+                                                                                Invalid
+                                                                                OTP</div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <p class="mt-2">Didn't receive the OTP?<span
+                                                                            class="blueFont" (click)="resendSms()">
+                                                                            Resend</span></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row mt-5">
+                                                                <div class="col-md-1"></div>
+                                                                <div class="col-md-11">
+                                                                    <button type="button"
+                                                                        class="btn btn-primary btn-md center rshadow"
+                                                                        type="submit" [disabled]="!smsVerifyForm.valid"
+                                                                        [ngClass]=" {'btn-info': smsVerifyForm.valid === true,'btn-light': smsVerifyForm.valid === false}">Verify</button>
+                                                                    <button type="button"
+                                                                        class="btn btn-outline-primary btn-md rshadow"
+                                                                        (click)="cancel()">Cancel</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/.Content-->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Disable SMS Auth Modal  -->
+                    <div mdbModal #smsDis="mdbModal" class="modal fade" id="smsDisable" tabindex="-1" role="dialog"
+                        aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <!--Content-->
+                            <div class="modal-content text-center">
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12 text-center">
+                                                <img src="assets/icons/changePsw.svg">
+                                                <h5 class="mt-2">Disable SMS Authentication</h5>
+                                            </div>
+                                            <button type="button" class="close pull-right" aria-label="Close"
+                                                (click)="smsDis.hide()">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                            <form [formGroup]="smsDisableForm" (ngSubmit)="smsDisableSubmit()">
+                                                <div *ngIf="!checkDisableSms">
+                                                    <div class="custom-file mt-3">
+                                                        <input type="text" class="form-control"
+                                                            [formControl]="smsDisableForm.controls.contactNumber"
+                                                            value="{{this.smsDisableForm.value.contactNumber}}"
+                                                            readonly>
+                                                    </div>
+                                                    <div class="custom-file mt-3">
+                                                        <input type="password" id="oldPassword" placeholder="Password"
+                                                            [formControl]="smsDisableForm.controls.oldPassword"
+                                                            class="form-control" #yyx> <span class="fa field-icon"
+                                                            (click)="yyx.type=yyx.type=='password'?'text':'password'"
+                                                            [ngClass]=" {'fa-eye-slash ': yyx.type === 'text','fa-eye': yyx.type === 'password'}"></span>
+                                                        <div *ngIf="smsDisableForm.controls.oldPassword.errors && (smsDisableForm.controls.oldPassword.dirty || smsDisableForm.controls.oldPassword.touched)"
+                                                            class="error">
+                                                            <div
+                                                                [hidden]="!smsDisableForm.controls.oldPassword.errors.required">
+                                                                password is required!
+                                                            </div>
+                                                            <div
+                                                                [hidden]="!smsDisableForm.controls.oldPassword.errors.minlength">
+                                                                Invalid Password.
+                                                            </div>
+                                                            <div
+                                                                [hidden]="!smsDisableForm.controls.oldPassword.errors.maxlength">
+                                                                Invalid Password.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <input mdbBtn color="info" rounded="true" block="true"
+                                                        class="my-4 waves-effect z-depth-0" mdbWavesEffect type="submit"
+                                                        value="SEND OTP" [disabled]="!smsDisableForm.valid"
+                                                        [ngClass]=" {'btn-info': smsDisableForm.valid === true,'btn-light': smsDisableForm.valid === false}">
+                                                </div>
+                                            </form>
+                                            <div class="col-md-12">
+                                                <form [formGroup]="smsDisableVerifyForm"
+                                                    (ngSubmit)="smsDisableVerifySubmit()">
+                                                    <div *ngIf="checkDisableSms">
+                                                        <div class="custom-file mt-3">
+                                                            <input type="text" id="smsDisableOtp" placeholder="OTP"
+                                                                [formControl]="smsDisableVerifyForm.controls.smsDisableOtp"
+                                                                class="form-control"
+                                                                (keyup)="onKey($event,'smsDisable')" maxlength="6">
+                                                            <div *ngIf="smsDisableVerifysubmitted && smsDisableVerifyForm.controls.smsDisableOtp.errors"
+                                                                class="error">
+                                                                <div
+                                                                    *ngIf="smsDisableVerifyForm.controls.smsDisableOtp.errors.required">
+                                                                    OTP
+                                                                    is required</div>
+                                                                <div
+                                                                    *ngIf="smsDisableVerifyForm.controls.smsDisableOtp.errors.maxlength">
+                                                                    Invalid
+                                                                    OTP </div>
+                                                            </div>
+                                                        </div>
+                                                        <p class="mt-2 floatLeft">Didn't receive the OTP?<span
+                                                                class="blueFont" (click)="resendSms()">
+                                                                Resend</span>
+                                                        </p>
+                                                        <input mdbBtn color="info" rounded="true" block="true"
+                                                            class="my-4 waves-effect z-depth-0" mdbWavesEffect
+                                                            type="submit" value="DISABLE SMS AUTH"
+                                                            [disabled]="!smsDisableVerifyForm.valid"
+                                                            [ngClass]=" {'btn-info': smsDisableVerifyForm.valid === true,'btn-light': smsDisableVerifyForm.valid === false}">
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/.Content-->
+                            </div>
+                        </div>
+                    </div>
+                    <!---------------@@@@@@@ Second Password Disable @@@@@@@@----------------->
+                    <!---------------@@@@@@@ security Question @@@@@@@@----------------->
+                    <div mdbModal #frameSecurityQuestion="mdbModal" class="modal fade" id="securityQuestion"
+                        tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <!--Content-->
+                            <div class="modal-content text-center boxRadius">
+                                <!--Body-->
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12 text-center mt-2">
+                                                <img src="assets/icons/lock.png">
+                                                <h5 class="mt-2">Security Question</h5>
+                                            </div>
+                                            <button type="button" class="close pull-right" aria-label="Close"
+                                                (click)="frameSecurityQuestion.hide()">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                            <div class="col-md-12 mt-3">
+                                                <form [formGroup]="securityQuestionForm"
+                                                    (ngSubmit)="securityQuestionSubmit()" *ngIf="!securityStatus">
+                                                    <mat-form-field appearance="outline" class="fullwidth">
+                                                        <mat-label>Security Question</mat-label>
+                                                        <input matInput type="text" value="{{securityQuesAsk}}"
+                                                            readonly>
+                                                    </mat-form-field>
+                                                    <mat-form-field appearance="outline" class="fullwidth">
+                                                        <mat-label>Answer</mat-label>
+                                                        <input matInput type="password"
+                                                            [formControl]="securityQuestionForm.controls.securityQuesAnswer"
+                                                            maxlength="16">
+                                                    </mat-form-field>
+                                                    <div *ngIf="securityQuestionForm.controls.securityQuesAnswer.errors && (securityQuestionForm.controls.securityQuesAnswer.dirty || securityQuestionForm.controls.securityQuesAnswer.touched)"
+                                                        class="error matMargin">
+                                                        <div
+                                                            [hidden]="!securityQuestionForm.controls.securityQuesAnswer.errors.required">
+                                                            Please enter answer
+                                                        </div>
+                                                        <div
+                                                            [hidden]="!securityQuestionForm.controls.securityQuesAnswer.errors.minlength">
+                                                            Answer must be at least 8 characters long.
+                                                        </div>
+                                                        <div
+                                                            [hidden]="!securityQuestionForm.controls.securityQuesAnswer.errors.maxlength">
+                                                            Answer cannot be more than 16 characters long.
+                                                        </div>
+                                                    </div>
+                                                    <input mdbBtn color="info" rounded="true" block="true"
+                                                        class="my-4 waves-effect z-depth-0" mdbWavesEffect type="submit"
+                                                        value="SUBMIT" [disabled]="!securityQuestionForm.valid"
+                                                        [ngClass]=" {'btn-info': securityQuestionForm.valid === true,'btn-light': securityQuestionForm.valid === false}">
+                                                </form>
+                                                <form [formGroup]="securityQuestionSelectForm"
+                                                    (ngSubmit)="securityQuestionSelectSubmit()" *ngIf="securityStatus">
+                                                    <mat-form-field class="fullwidth" appearance="outline">
+                                                        <mat-label>Select Question 1</mat-label>
+                                                        <mat-select [(ngModel)]="q1" (selectionChange)="first($event)"
+                                                            [formControl]="securityQuestionSelectForm.controls.quesOne">
+                                                            <mat-option *ngFor="let ques of question1"
+                                                                [value]="ques.securityQuestion">
+                                                                {{ques.securityQuestion}}</mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                    <div *ngIf="securityQuestionSelectForm.controls.quesOne.errors && (securityQuestionSelectForm.controls.quesOne.dirty || securityQuestionSelectForm.controls.quesOne.touched)"
+                                                        class="error matMargin">
+                                                        <div
+                                                            [hidden]="!securityQuestionSelectForm.controls.quesOne.errors.required">
+                                                            Please select security
+                                                            question </div>
+                                                    </div>
+                                                    <mat-form-field appearance="outline" class="fullwidth">
+                                                        <mat-label>Answer</mat-label>
+                                                        <input matInput type="password" [(ngModel)]="a1"
+                                                            [formControl]="securityQuestionSelectForm.controls.ansOne"
+                                                            #g><span class="fa field-icon"
+                                                            (click)="g.type=g.type=='password'?'text':'password'"
+                                                            [ngClass]=" {'fa-eye-slash ': g.type === 'password','fa-eye': g.type === 'text'}"></span>
+                                                    </mat-form-field>
+                                                    <div *ngIf="securityQuestionSelectForm.controls.ansOne.errors && (securityQuestionSelectForm.controls.ansOne.dirty || securityQuestionSelectForm.controls.ansOne.touched)"
+                                                        class="error matMargin">
+                                                        <div
+                                                            [hidden]="!securityQuestionSelectForm.controls.ansOne.errors.required">
+                                                            Answer is required!
+                                                        </div>
+                                                        <div
+                                                            [hidden]="!securityQuestionSelectForm.controls.ansOne.errors.minlength">
+                                                            Answer must be at least 2 characters long.
+                                                        </div>
+                                                        <div
+                                                            [hidden]="!securityQuestionSelectForm.controls.ansOne.errors.maxlength">
+                                                            Answer cannot be more than 12 characters long.
+                                                        </div>
+                                                    </div>
+                                                    <!-----------------------------------------------@@@@@@@@@@@@@@@@@@ Security Question 2 @@@@@@@@@@@@@@@---------------------------------------------------------->
+                                                    <mat-form-field class="fullwidth" appearance="outline">
+                                                        <mat-label>Select Question 2</mat-label>
+                                                        <mat-select [(ngModel)]="q2" (selectionChange)="second($event)"
+                                                            [formControl]="securityQuestionSelectForm.controls.quesTwo">
+                                                            <mat-option *ngFor="let ques of question2"
+                                                                [value]="ques.securityQuestion">
+                                                                {{ques.securityQuestion}}</mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                    <div *ngIf="securityQuestionSelectForm.controls.quesTwo.errors && (securityQuestionSelectForm.controls.quesTwo.dirty || securityQuestionSelectForm.controls.quesTwo.touched)"
+                                                        class="error matMargin">
+                                                        <div
+                                                            [hidden]="!securityQuestionSelectForm.controls.quesTwo.errors.required">
+                                                            Please select security
+                                                            question </div>
+                                                    </div>
+                                                    <mat-form-field appearance="outline" class="fullwidth">
+                                                        <mat-label>Answer</mat-label>
+                                                        <input matInput type="password" [(ngModel)]="a2"
+                                                            [formControl]="securityQuestionSelectForm.controls.ansTwo"
+                                                            #j><span class="fa field-icon"
+                                                            (click)="j.type=j.type=='password'?'text':'password'"
+                                                            [ngClass]=" {'fa-eye-slash ': j.type === 'password','fa-eye': j.type === 'text'}"></span>
+                                                    </mat-form-field>
+                                                    <div *ngIf="securityQuestionSelectForm.controls.ansTwo.errors && (securityQuestionSelectForm.controls.ansTwo.dirty || securityQuestionSelectForm.controls.ansTwo.touched)"
+                                                        class="error matMargin">
+                                                        <div
+                                                            [hidden]="!securityQuestionSelectForm.controls.ansTwo.errors.required">
+                                                            Answer is required!
+                                                        </div>
+                                                        <div
+                                                            [hidden]="!securityQuestionSelectForm.controls.ansTwo.errors.minlength">
+                                                            Answer must be at least 2 characters long.
+                                                        </div>
+                                                        <div
+                                                            [hidden]="!securityQuestionSelectForm.controls.ansTwo.errors.maxlength">
+                                                            Answer cannot be more than 12 characters long.
+                                                        </div>
+                                                    </div>
+                                                    <!-----------------------------------------------@@@@@@@@@@@@@@@@@@ Security Question 3 @@@@@@@@@@@@@@@---------------------------------------------------------->
+                                                    <mat-form-field class="fullwidth" appearance="outline">
+                                                        <mat-label>Select Question 3</mat-label>
+                                                        <mat-select [(ngModel)]="q3" (selectionChange)="third($event)"
+                                                            [formControl]="securityQuestionSelectForm.controls.quesThree">
+                                                            <mat-option *ngFor="let ques of question3"
+                                                                [value]="ques.securityQuestion">
+                                                                {{ques.securityQuestion}}</mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                    <div *ngIf="securityQuestionSelectForm.controls.quesThree.errors && (securityQuestionSelectForm.controls.quesThree.dirty || securityQuestionSelectForm.controls.quesThree.touched)"
+                                                        class="error">
+                                                        <div
+                                                            [hidden]="!securityQuestionSelectForm.controls.quesThree.errors.required">
+                                                            Please select security
+                                                            question </div>
+                                                    </div>
+                                                    <mat-form-field appearance="outline" class="fullwidth">
+                                                        <mat-label>Answer</mat-label>
+                                                        <input matInput type="password" [(ngModel)]="a3"
+                                                            [formControl]="securityQuestionSelectForm.controls.ansThree"
+                                                            #w><span class="fa field-icon"
+                                                            (click)="w.type=w.type=='password'?'text':'password'"
+                                                            [ngClass]=" {'fa-eye-slash ': w.type === 'password','fa-eye': w.type === 'text'}"></span>
+                                                    </mat-form-field>
+                                                    <div *ngIf="securityQuestionSelectForm.controls.ansThree.errors && (securityQuestionSelectForm.controls.ansThree.dirty || securityQuestionSelectForm.controls.ansThree.touched)"
+                                                        class="error matMargin">
+                                                        <div
+                                                            [hidden]="!securityQuestionSelectForm.controls.ansThree.errors.required">
+                                                            Answer is required!
+                                                        </div>
+                                                        <div
+                                                            [hidden]="!securityQuestionSelectForm.controls.ansThree.errors.minlength">
+                                                            Answer must be at least 2 characters long.
+                                                        </div>
+                                                        <div
+                                                            [hidden]="!securityQuestionSelectForm.controls.ansThree.errors.maxlength">
+                                                            Answer cannot be more than 12 characters long.
+                                                        </div>
+                                                    </div>
+                                                    <!-- Sign up button -->
+                                                    <input mdbBtn color="info" rounded="true" block="true"
+                                                        class="my-4 waves-effect z-depth-0" mdbWavesEffect type="submit"
+                                                        value="Update" [disabled]="!securityQuestionSelectForm.valid"
+                                                        [ngClass]=" {'btn-info': securityQuestionSelectForm.valid === true,'btn-light': securityQuestionSelectForm.valid === false}">
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/.Content-->
+                        </div>
+                    </div>
+                    <!---------------@@@@@@@ Anti-Phishing modal @@@@@@@@----------------->
+                    <div mdbModal #frameAnti="mdbModal" class="modal fade" id="antiPhishing" tabindex="-1" role="dialog"
+                        aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <!--Content-->
+                            <div class="modal-content text-center  boxRadius">
+                                <!--Body-->
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12 text-center">
+                                                <img src="assets/icons/antiPhishing.svg">
+                                                <h5 class="mt-2">Anti-Phishing Code</h5>
+                                            </div>
+                                            <button type="button" class="close pull-right" aria-label="Close"
+                                                (click)="frameAnti.hide()">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                            <div class="col-md-12 mt-3">
+                                                <form [formGroup]="antiPhishingForm" (ngSubmit)="antiPhishingSubmit()"
+                                                    *ngIf="!antiPhishingStatus">
+                                                    <mat-form-field appearance="outline" class="fullwidth">
+                                                        <mat-label> Anti-Phishing Code</mat-label>
+                                                        <input matInput type="text"
+                                                            [formControl]="antiPhishingForm.controls.antiCode"
+                                                            maxlength="16">
+                                                    </mat-form-field>
+                                                    <div *ngIf="antiPhishingForm.controls.antiCode.errors && (antiPhishingForm.controls.antiCode.dirty || antiPhishingForm.controls.antiCode.touched)"
+                                                        class="error matMargin">
+                                                        <div
+                                                            [hidden]="!antiPhishingForm.controls.antiCode.errors.required">
+                                                            Anti-Phishing Code is required!
+                                                        </div>
+                                                        <div
+                                                            [hidden]="!antiPhishingForm.controls.antiCode.errors.minlength">
+                                                            Anti-Phishing Code must be at least 8 characters
+                                                            long.
+                                                        </div>
+                                                        <div
+                                                            [hidden]="!antiPhishingForm.controls.antiCode.errors.maxlength">
+                                                            Anti-Phishing Code cannot be more than 16 characters
+                                                            long.
+                                                        </div>
+                                                        <div
+                                                            [hidden]="!antiPhishingForm.controls.antiCode.errors.pattern">
+                                                            Only alphanumaric allowed
+                                                        </div>
+                                                    </div>
+                                                    <input mdbBtn color="info" rounded="true" block="true"
+                                                        class="my-4 waves-effect z-depth-0" mdbWavesEffect type="submit"
+                                                        value="SUBMIT" [disabled]="!antiPhishingForm.valid"
+                                                        [ngClass]=" {'btn-info': antiPhishingForm.valid === true,'btn-light': antiPhishingForm.valid === false}">
+                                                </form>
+                                                <form [formGroup]="antiPhishingForm" (ngSubmit)="antiPhishingUpdate()"
+                                                    *ngIf="antiPhishingStatus">
+                                                    <mat-form-field appearance="outline" class="fullwidth">
+                                                        <mat-label> Anti-Phishing Code</mat-label>
+                                                        <input matInput type="text"
+                                                            [formControl]="antiPhishingForm.controls.antiCode"
+                                                            maxlength="16">
+                                                    </mat-form-field>
+                                                    <div *ngIf="antiPhishingForm.controls.antiCode.errors && (antiPhishingForm.controls.antiCode.dirty || antiPhishingForm.controls.antiCode.touched)"
+                                                        class="error matMargin">
+                                                        <div
+                                                            [hidden]="!antiPhishingForm.controls.antiCode.errors.required">
+                                                            Anti-Phishing Code is required!
+                                                        </div>
+                                                        <div
+                                                            [hidden]="!antiPhishingForm.controls.antiCode.errors.minlength">
+                                                            Anti-Phishing Code must be at least 8 characters
+                                                            long.
+                                                        </div>
+                                                        <div
+                                                            [hidden]="!antiPhishingForm.controls.antiCode.errors.maxlength">
+                                                            Anti-Phishing Code cannot be more than 16 characters
+                                                            long.
+                                                        </div>
+                                                        <div
+                                                            [hidden]="!antiPhishingForm.controls.antiCode.errors.pattern">
+                                                            Only alphanumaric allowed
+                                                        </div>
+                                                    </div>
+                                                    <input mdbBtn color="info" rounded="true" block="true"
+                                                        class="my-4 waves-effect z-depth-0" mdbWavesEffect type="submit"
+                                                        value="SUBMIT" [disabled]="!antiPhishingForm.valid"
+                                                        [ngClass]=" {'btn-info': antiPhishingForm.valid === true,'btn-light': antiPhishingForm.valid === false}">
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/.Content-->
+                        </div>
+                    </div>
+                    <!---------------@@@@@@@ Anti-Phishing End @@@@@@@@----------------->
+
+                    <!---------------@@@@@@@ Second Password modal @@@@@@@@----------------->
+                    <div mdbModal #frameSecPsw="mdbModal" class="modal fade" id="secondPassword" tabindex="-1"
+                        role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <!--Content-->
+                            <div class="modal-content text-center boxRadius">
+                                <!--Body-->
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12 text-center">
+                                                <img src="assets/icons/secondPassword.svg">
+                                                <h5 class="mt-2">Transaction Password</h5>
+                                            </div>
+                                            <button type="button" class="close pull-right" aria-label="Close"
+                                                (click)="frameSecPsw.hide()">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                            <div class="col-md-12 mt-3">
+                                                <form [formGroup]="secondPasswordForm"
+                                                    (ngSubmit)="secondPasswordSubmit()">
+                                                    <mat-form-field appearance="outline" class="fullwidth">
+                                                        <mat-label>Transaction Password</mat-label>
+                                                        <input matInput type="password"
+                                                            [formControl]="secondPasswordForm.controls.newPassword" #o
+                                                            maxlength="16">
+                                                        <span class="fa field-icon"
+                                                            (click)="o.type=o.type=='password'?'text':'password'"
+                                                            [ngClass]=" {'fa-eye-slash ': o.type === 'password','fa-eye': o.type === 'text'}"></span>
+                                                    </mat-form-field>
+                                                    <div *ngIf="secondPasswordForm.controls.newPassword.errors && (secondPasswordForm.controls.newPassword.dirty || secondPasswordForm.controls.newPassword.touched)"
+                                                        class="error matMargin">
+                                                        <div
+                                                            [hidden]="!secondPasswordForm.controls.newPassword.errors.required">
+                                                            Please enter Transaction Password
+                                                        </div>
+                                                        <div
+                                                            [hidden]="!secondPasswordForm.controls.newPassword.errors.minlength">
+                                                            New Password must be 8 digit long.
+                                                        </div>
+                                                        <div
+                                                            [hidden]="!secondPasswordForm.controls.newPassword.errors.maxlength">
+                                                            New Password only 16 digit long.
+                                                        </div>
+                                                        <div
+                                                            [hidden]="!secondPasswordForm.controls.newPassword.errors.pattern">
+                                                            Only Number allowed
+                                                        </div>
+                                                    </div>
+                                                    <mat-form-field appearance="outline" class="fullwidth">
+                                                        <mat-label>Confirm transaction password</mat-label>
+                                                        <input matInput type="password"
+                                                            [formControl]="secondPasswordForm.controls.confirmPassword"
+                                                            #ux maxlength="16"><span class="fa field-icon"
+                                                            (click)="ux.type=ux.type=='password'?'text':'password'"
+                                                            [ngClass]=" {'fa-eye-slash ': ux.type === 'password','fa-eye': ux.type === 'text'}"></span>
+                                                    </mat-form-field>
+                                                    <div *ngIf="secondPasswordForm.controls.confirmPassword.errors && (secondPasswordForm.controls.confirmPassword.dirty || secondPasswordForm.controls.confirmPassword.touched)"
+                                                        class="error matMargin">
+                                                        <div
+                                                            [hidden]="!secondPasswordForm.controls.confirmPassword.errors.required">
+                                                            Confirm password is required!
+                                                        </div>
+                                                        <div
+                                                            *ngIf="secondPasswordForm.get('confirmPassword')?.errors?.notEquivalent">
+                                                            Passwords
+                                                            did not match</div>
+                                                    </div>
+                                                    <input mdbBtn color="info" rounded="true" block="true"
+                                                        class="my-4 waves-effect z-depth-0" mdbWavesEffect type="submit"
+                                                        value="SUBMIT" [disabled]="!secondPasswordForm.valid"
+                                                        [ngClass]=" {'btn-info': secondPasswordForm.valid === true,'btn-light': secondPasswordForm.valid === false}">
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/.Content-->
+                        </div>
+                    </div>
+                    <!---------------@@@@@@@ Second Password Enable @@@@@@@@----------------->
+                    <!---------------@@@@@@@ Second Password Disable @@@@@@@@----------------->
+                    <div mdbModal #frameSecPswDisable="mdbModal" class="modal fade" id="secondPasswordDisable"
+                        tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <!--Content-->
+                            <div class="modal-content text-center">
+                                <!--Body-->
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12 text-center">
+                                                <img src="assets/icons/secondPassword.svg">
+                                                <h5 class="mt-2">Transaction Password Disable</h5>
+                                            </div>
+                                            <button type="button" class="close pull-right" aria-label="Close"
+                                                (click)="frameSecPswDisable.hide()">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                            <div class="col-md-12 mt-3">
+                                                <form [formGroup]="secondPasswordDisableForm"
+                                                    (ngSubmit)="secondPasswordDisableSubmit()">
+                                                    <div class="custom-file mt-3">
+                                                        <input type="password" id="newPasswordDisable"
+                                                            placeholder="Transaction Password"
+                                                            [formControl]="secondPasswordDisableForm.controls.newPasswordDisable"
+                                                            class="form-control" #n maxlength="6"><span
+                                                            class="fa field-icon"
+                                                            (click)="n.type=n.type=='password'?'text':'password'"
+                                                            [ngClass]=" {'fa-eye-slash ': n.type === 'text','fa-eye': n.type === 'password'}"></span>
+                                                        <div *ngIf="secondPasswordDisableForm.controls.newPasswordDisable.errors && (secondPasswordDisableForm.controls.newPasswordDisable.dirty || secondPasswordDisableForm.controls.newPasswordDisable.touched)"
+                                                            class="error">
+                                                            <div
+                                                                [hidden]="!secondPasswordDisableForm.controls.newPasswordDisable.errors.required">
+                                                                Account password is required!
+                                                            </div>
+                                                            <div
+                                                                [hidden]="!secondPasswordDisableForm.controls.newPasswordDisable.errors.minlength">
+                                                                Invalid Password.
+                                                            </div>
+                                                            <div
+                                                                [hidden]="!secondPasswordDisableForm.controls.newPasswordDisable.errors.maxlength">
+                                                                Invalid Password.
+                                                            </div>
+                                                            <div
+                                                                [hidden]="!secondPasswordDisableForm.controls.newPasswordDisable.errors.pattern">
+                                                                Invalid Password.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <input mdbBtn color="info" rounded="true" block="true"
+                                                        class="my-4 waves-effect z-depth-0" mdbWavesEffect type="submit"
+                                                        value="SUBMIT" [disabled]="!secondPasswordDisableForm.valid"
+                                                        [ngClass]=" {'btn-info': secondPasswordDisableForm.valid === true,'btn-light': secondPasswordDisableForm.valid === false}">
+                                                    <p class="floatLeft">
+                                                        <a class="links" (click)="secondPasswordForgotClick()">Forgot
+                                                            Transaction Password</a>
+                                                    </p>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/.Content-->
+                        </div>
+                    </div>
+                    <!-- @@@@@@ Second Password Disable @@@@@@@@@@ -->
+                    <!-- @@@@@@@@@@@@@@----change second password @@@@@@@@@@@@-->
+                    <div mdbModal #frameSecPswChange="mdbModal" class="modal fade" id="secondPasswordChange"
+                        tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <!--Content-->
+                            <div class="modal-content text-center">
+                                <!--Body-->
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12 text-center">
+                                                <img src="assets/icons/secondPassword.svg">
+                                                <h5 class="mt-2"> Change Transaction Password</h5>
+                                            </div>
+                                            <button type="button" class="close pull-right" aria-label="Close"
+                                                (click)="frameSecPswChange.hide()">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                            <div class="col-md-12 mt-3">
+                                                <form [formGroup]="secondPasswordChangeForm"
+                                                    (ngSubmit)="secondPasswordChangeSubmit()">
+                                                    <div class="custom-file mt-3">
+                                                        <input type="password" id="SecondOldPassword"
+                                                            placeholder="Current Transction Password"
+                                                            [formControl]="secondPasswordChangeForm.controls.oldPassword"
+                                                            class="form-control" #w maxlength="6"><span
+                                                            class="fa field-icon"
+                                                            (click)="w.type=w.type=='password'?'text':'password'"
+                                                            [ngClass]=" {'fa-eye-slash ': w.type === 'text','fa-eye': w.type === 'password'}"></span>
+                                                        <div *ngIf="secondPasswordChangeForm.controls.oldPassword.errors && (secondPasswordChangeForm.controls.oldPassword.dirty || secondPasswordChangeForm.controls.oldPassword.touched)"
+                                                            class="error">
+                                                            <div
+                                                                [hidden]="!secondPasswordChangeForm.controls.oldPassword.errors.required">
+                                                                Transction password is required!
+                                                            </div>
+                                                            <div
+                                                                [hidden]="!secondPasswordChangeForm.controls.oldPassword.errors.minlength">
+                                                                Invalid Password
+                                                            </div>
+                                                            <div
+                                                                [hidden]="!secondPasswordChangeForm.controls.oldPassword.errors.maxlength">
+                                                                Invalid Password.
+                                                            </div>
+                                                            <div
+                                                                [hidden]="!secondPasswordChangeForm.controls.oldPassword.errors.pattern">
+                                                                Invalid Password
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="custom-file mt-3">
+                                                        <input type="password" id="newPassword"
+                                                            placeholder="New Password"
+                                                            [formControl]="secondPasswordChangeForm.controls.newPassword"
+                                                            #l class="form-control" maxlength="6"><span
+                                                            class="fa field-icon"
+                                                            (click)="l.type=l.type=='password'?'text':'password'"
+                                                            [ngClass]=" {'fa-eye-slash ': l.type === 'text','fa-eye': l.type === 'password'}"></span>
+                                                        <div *ngIf="secondPasswordChangeForm.controls.newPassword.errors && (secondPasswordChangeForm.controls.newPassword.dirty || secondPasswordChangeForm.controls.newPassword.touched)"
+                                                            class="error">
+                                                            <div
+                                                                [hidden]="!secondPasswordChangeForm.controls.newPassword.errors.required">
+                                                                New password is required!
+                                                            </div>
+                                                            <div
+                                                                [hidden]="!secondPasswordChangeForm.controls.newPassword.errors.minlength">
+                                                                New Password must be 6 digit long.
+                                                            </div>
+                                                            <div
+                                                                [hidden]="!secondPasswordChangeForm.controls.newPassword.errors.maxlength">
+                                                                New Password only 6 digit long.
+                                                            </div>
+                                                            <div
+                                                                [hidden]="!secondPasswordChangeForm.controls.newPassword.errors.pattern">
+                                                                Only number allowed
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="custom-file mt-3">
+                                                        <input type="password" id="exampleForm2"
+                                                            placeholder="confirm Password"
+                                                            [formControl]="secondPasswordChangeForm.controls.confirmPassword"
+                                                            #u class="form-control" maxlength="6"><span
+                                                            class="fa field-icon"
+                                                            (click)="u.type=u.type=='password'?'text':'password'"
+                                                            [ngClass]=" {'fa-eye-slash ': u.type === 'text','fa-eye': u.type === 'password'}"></span>
+                                                        <div *ngIf="secondPasswordChangeForm.controls.confirmPassword.errors && (secondPasswordChangeForm.controls.confirmPassword.dirty || secondPasswordChangeForm.controls.confirmPassword.touched)"
+                                                            class="error">
+                                                            <div
+                                                                [hidden]="!secondPasswordChangeForm.controls.confirmPassword.errors.required">
+                                                                Confirm password is required!
+                                                            </div>
+                                                            <div
+                                                                *ngIf="secondPasswordChangeForm.get('confirmPassword')?.errors?.notEquivalent">
+                                                                Passwords
+                                                                did not match</div>
+                                                        </div>
+                                                    </div>
+                                                    <input mdbBtn color="info" rounded="true" block="true"
+                                                        class="my-4 waves-effect z-depth-0" mdbWavesEffect type="submit"
+                                                        value="SUBMIT" [disabled]="!secondPasswordChangeForm.valid"
+                                                        [ngClass]=" {'btn-info': secondPasswordChangeForm.valid === true,'btn-light': secondPasswordChangeForm.valid === false}">
+                                                    <p class="floatLeft">
+                                                        <a class="links" (click)="secondPasswordForgotClick()">Forgot
+                                                            Transaction Password</a>
+                                                    </p>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/.Content-->
+                        </div>
+                    </div>
+                    <!-- @@@@@@ Second Password Change @@@@@@@@@@ -->
+                    <!-- @@@@@@ Second Password Forgot @@@@@@@@@@ -->
+                    <div mdbModal #frameSecondPasswordForgot="mdbModal" class="modal fade" id="secondPasswordForgot"
+                        tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <!--Content-->
+                            <div class="modal-content text-center">
+                                <!--Body-->
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12 text-center">
+                                                <img src="assets/icons/secondPassword.svg">
+                                                <h5 class="mt-2"> Forgot Transaction Password</h5>
+                                            </div>
+                                            <button type="button" class="close pull-right" aria-label="Close"
+                                                (click)="frameSecondPasswordForgot.hide()">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                            <div class="col-md-12 mt-3">
+                                                <form [formGroup]="secondPasswordForgotForm"
+                                                    (ngSubmit)="secondPasswordForgotSubmit()">
+                                                    <div class="custom-file mt-3">
+                                                        <input type="password" id="Secondpassword"
+                                                            placeholder="Account Password"
+                                                            [formControl]="secondPasswordForgotForm.controls.password"
+                                                            class="form-control" #wave maxlength="16"
+                                                            minlength="8"><span class="fa field-icon"
+                                                            (click)="wave.type=wave.type=='password'?'text':'password'"
+                                                            [ngClass]=" {'fa-eye-slash ': wave.type === 'text','fa-eye': wave.type === 'password'}"></span>
+                                                        <div *ngIf="secondPasswordForgotForm.controls.password.errors && (secondPasswordForgotForm.controls.password.dirty || secondPasswordForgotForm.controls.password.touched)"
+                                                            class="error">
+                                                            <div
+                                                                [hidden]="!secondPasswordForgotForm.controls.password.errors.required">
+                                                                Account password is required!
+                                                            </div>
+                                                            <div
+                                                                [hidden]="!secondPasswordForgotForm.controls.password.errors.minlength">
+                                                                Invalid Password
+                                                            </div>
+                                                            <div
+                                                                [hidden]="!secondPasswordForgotForm.controls.password.errors.maxlength">
+                                                                Invalid Password.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="custom-file mt-3">
+                                                        <input type="password" id="newPassword"
+                                                            placeholder="New Password"
+                                                            [formControl]="secondPasswordForgotForm.controls.newPassword"
+                                                            #ll class="form-control" maxlength="6"><span
+                                                            class="fa field-icon"
+                                                            (click)="ll.type=ll.type=='password'?'text':'password'"
+                                                            [ngClass]=" {'fa-eye-slash ': ll.type === 'text','fa-eye': ll.type === 'password'}"></span>
+                                                        <div *ngIf="secondPasswordForgotForm.controls.newPassword.errors && (secondPasswordForgotForm.controls.newPassword.dirty || secondPasswordForgotForm.controls.newPassword.touched)"
+                                                            class="error">
+                                                            <div
+                                                                [hidden]="!secondPasswordForgotForm.controls.newPassword.errors.required">
+                                                                New password is required!
+                                                            </div>
+                                                            <div
+                                                                [hidden]="!secondPasswordForgotForm.controls.newPassword.errors.minlength">
+                                                                New Password must be 6 digit long.
+                                                            </div>
+                                                            <div
+                                                                [hidden]="!secondPasswordForgotForm.controls.newPassword.errors.maxlength">
+                                                                New Password only 6 digit long.
+                                                            </div>
+                                                            <div
+                                                                [hidden]="!secondPasswordForgotForm.controls.newPassword.errors.pattern">
+                                                                Only number allowed
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="custom-file mt-3">
+                                                        <input type="password" id="exampleForm2"
+                                                            placeholder="confirm Password"
+                                                            [formControl]="secondPasswordForgotForm.controls.confirmPassword"
+                                                            #ups class="form-control" maxlength="6"><span
+                                                            class="fa field-icon"
+                                                            (click)="ups.type=ups.type=='password'?'text':'password'"
+                                                            [ngClass]=" {'fa-eye-slash ': ups.type === 'text','fa-eye': ups.type === 'password'}"></span>
+                                                        <div *ngIf="secondPasswordForgotForm.controls.confirmPassword.errors && (secondPasswordForgotForm.controls.confirmPassword.dirty || secondPasswordForgotForm.controls.confirmPassword.touched)"
+                                                            class="error">
+                                                            <div
+                                                                [hidden]="!secondPasswordForgotForm.controls.confirmPassword.errors.required">
+                                                                Confirm password is required!
+                                                            </div>
+                                                            <div
+                                                                *ngIf="secondPasswordForgotForm.get('confirmPassword')?.errors?.notEquivalent">
+                                                                Passwords
+                                                                did not match</div>
+                                                        </div>
+                                                    </div>
+                                                    <input mdbBtn color="info" rounded="true" block="true"
+                                                        class="my-4 waves-effect z-depth-0" mdbWavesEffect type="submit"
+                                                        value="SUBMIT" [disabled]="!secondPasswordForgotForm.valid"
+                                                        [ngClass]=" {'btn-info': secondPasswordForgotForm.valid === true,'btn-light': secondPasswordForgotForm.valid === false}">
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/.Content-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Device History -->
+<section>
+    <div class="container  mt-3 mb-3">
+        <div class="row">
+            <div class="col-md-7 PaddingZero ">
+                <div class="card1 boxRadius boxShadow cardPadding">
+                    <p class="mb-1 mt-2 itemHead">Device Management</p>
+                    <!-- <p class="mb-0">These devices are currently allowed to access your account</p> -->
+                    <div class="table-responsive mt-2">
+                        <table class="table PaddingZero">
+                            <thead class="white black-text">
+                                <tr>
+                                    <th scope="col">Device</th>
+                                    <th scope="col">Recent Activity</th>
+                                    <th scope="col">IP Address</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table">
+                                <tr *ngFor="let x of deviceActivity;">
+                                    <td class="textColor">{{x.browser}} V{{x.browserVersion}} {{x.os}}</td>
+                                    <td class="textColor">{{x.createdAt}}</td>
+                                    <td>{{x.loginIP}}</td>
+                                    <td class=" text-center blueFont" (click)='deleteDeviceData(x.loginIP)'><i
+                                            class="fa fa-trash" aria-hidden="true"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 paddingSet ">
+                <div class="card1 boxRadius boxShadow cardPadding">
+                    <p class="mb-1 mt-2 itemHead">Last Login</p>
+                    <div class="table-responsive mt-2">
+                        <table class="table ">
+                            <thead class="white black-text">
+                                <tr>
+                                    <th scope="col">Recent Activity</th>
+                                    <th scope="col">IP Address</th>
+                                    <th scope="col">Location</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table">
+                                <tr *ngFor="let t of loginHistory">
+                                    <td>{{t.createdAt}}</td>
+                                    <td>{{t.loginIP}}</td>
+                                    <td>{{t.locationCity}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- login History  -->
+<!--@@@@@@@@@@@@@ 2F   @@@@@@@@@ popup -->
+<div mdbModal #twoFaModal="mdbModal" class="modal fade" id="twoFaModal" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <!--Content-->
+        <div class="modal-content text-center">
+            <!--Body-->
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <img src="assets/icons/2fa.png">
+                            <h5 class="mt-2">2FA Authentication</h5>
+                        </div>
+                        <button type="button" class="close pull-right" aria-label="Close" (click)="twoFaModal.hide()">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <div class="col-md-12 mt-3">
+                            <form [formGroup]="twoFaForm" (ngSubmit)="twoFaModalSubmit()" class="text-center"
+                                style="color: #757575;">
+                                <div class="custom-file mt-3">
+                                    <input type="text" [formControl]="twoFaForm.controls.otp" class="form-control"
+                                        id="mainOtp" (keyup)="onKey1($event)" placeholder="OTP" maxlength="6">
+                                    <div *ngIf="twoFaForm.controls.otp.errors && (twoFaForm.controls.otp.dirty || twoFaForm.controls.otp.touched)"
+                                        class="error">
+                                        <div [hidden]="!twoFaForm.controls.otp.errors.required">
+                                            OTP is required
+                                        </div>
+                                        <div [hidden]="!twoFaForm.controls.otp.errors.minlength">
+                                            Invalid OTP
+                                        </div>
+                                    </div>
+                                </div>
+                                <p *ngIf="authType==true" class="mt-2 " (click)="resendSms()">
+                                    Didn't receive the OTP? <span class="blueFont">Resend</span></p>
+                                <input mdbBtn color="info" rounded="true" block="true"
+                                    class="my-4 waves-effect z-depth-0" mdbWavesEffect type="submit" value="Submit"
+                                    [disabled]="!twoFaForm.valid"
+                                    [ngClass]=" {'btn-info': twoFaForm.valid === true,'btn-light': twoFaForm.valid === false}">
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
+<!-- 2FA warning  -->
+<div mdbModal #twoFaWarning="mdbModal" class="modal fade" id="twoFaWarning" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <!--Content-->
+        <div class="modal-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <img src="assets/images/warning.png" width=20%>
+                        <div class="row">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8">
+                                <h6 class="mt-2 headfontx">We strongly recommonded you to enable 2FA on your account
+                                </h6>
+                            </div>
+                            <div class="col-md-2"></div>
+                        </div>
+                    </div>
+                    <div class="card1 mt-3 warningBackground">
+                        <p class="text-center links">Choose 2FA type:</p>
+                        <div class="container warningContainerBackground">
+                            <div class="row pointer" (click)="googleAuth()">
+                                <div class="col-md-2 pt-4">
+                                    <img src="assets/icons/2fa.png" class="googleAuthWidth">
+                                </div>
+                                <div class="col-md-10">
+                                    <p class="pt-3 tagp links">Google Authentication</p>
+                                    <p class="tagp">Enable 2FA notification via Google Authenticator.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card1 warningBackground">
+                        <div class="container warningContainerBackground">
+                            <div class="row pointer" (click)="smsAuth()">
+                                <div class="col-md-2  pt-4">
+                                    <img src="assets/icons/phone.svg" class="smsAuthWidth">
+                                </div>
+                                <div class="col-md-10">
+                                    <p class="pt-3 tagp links">SMS Authentication</p>
+                                    <p class="tagp">Enable 2FA notification via Google Authenticator.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-10">
+                                <p class="mt-2 floatRight">I understand the risk for not enabling
+                                    2FA.&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" class="btn btn-primary btn-sm transferCoin rshadow" size="sm"
+                                    aria-label="Close" (click)="twoFaWarning.hide()">Skip</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Body-->
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,342 @@
+<header>
+    <app-nav></app-nav>
+</header>
+<section>
+    <div class="container-fluid" style="background:#fff;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 mt-9">
+                    <p class="mb-1"> Total Balance</p>
+                    <h6 class="headfont">$2567 USD</h6>
+
+                </div>
+                <div class="col-md-3 mt-9">
+                    <p class="text-left mb-1"> Available Balance</p>
+                    <h6 class="text-left headfont2">$2567 USD</h6>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-2 mt-9">
+                    <p class="text-left mb-1"> In Order</p>
+                    <h6 class="text-left headfont3">$2567 USD</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container mt-3 mb-1">
+        <div class="row mt-5  white pointerCursor boxShadowRadius">
+            <div class="col-md-12">
+                <div class="card2">
+                    <div class="container mt-1 mb-1">
+                        <div class="row" (click)="address('crypto')">
+                            <div class="col-md-3">
+                                <p class="mb-0 mt-1 headfont">CRYPTO ADDRESSES</p>
+                            </div>
+                            <div class="col-md-8">
+                                <p class="mb-0 mt-1 " [hidden]="toggleValue==0 && toggleStatus">Please complete the KYC
+                                    information to increase
+                                    the transaction limit.</p>
+                            </div>
+                            <div class="col-md-1">
+                                <i *ngIf="toggleValue==0 && toggleStatus" class="fa fa-angle-up fafa text-right"
+                                    aria-hidden="true"></i>
+                                <i *ngIf="toggleValue!=0 || toggleValue==0 && !toggleStatus"
+                                    class="fa fa-angle-down fafa text-right" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="toggleValue==0 && toggleStatus">
+                            <div class="col-md-12 mt-4">
+                                <p>The Crypto addresses allows for labeling and saving destination addresses for easy ue
+                                    later .When withdrawaling you can quickly select an address from your address book.
+                                </p>
+                                <p class="mb-0 mt-4 headfont">Add New Address</p>
+                                <form [formGroup]="selectCoinForm" (ngSubmit)="addAddressSubmit()">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p class="mb-1 mt-3 itemHead">Currency</p>
+                                            <mat-form-field class="fullwidth" appearance="outline">
+                                                <mat-label>Select the coin/token</mat-label>
+                                                <mat-select  [formControl]="selectCoinForm.controls.coinName" (selectionChange)="getCoin($event)">
+                                                    <mat-option *ngFor="let coin of allCoin" [value]="coin.coinName">{{coin.coinName}}</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                            <div *ngIf="selectCoinForm.controls.coinName.errors && (selectCoinForm.controls.coinName.dirty || selectCoinForm.controls.coinName.touched)"
+                                                class="error matMargin">
+                                                <div [hidden]="!selectCoinForm.controls.coinName.errors.required"> Please select coin/token </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6"></div>
+                                        <div class="col-md-6">
+                                            <p class="mb-1 itemHead">Address</p>
+                                                    <mat-form-field appearance="outline" class="fullwidth">
+                                                      <mat-label>Coi/Token Address</mat-label>
+                                                      <input matInput  [formControl]="selectCoinForm.controls.address">
+                                                    </mat-form-field>
+                                      
+                                            <!-- <div class="custom-file">
+                                                <input type="text" [formControl]="selectCoinForm.controls.address"
+                                                    class="form-control back backgroundWhite">
+                                            </div> -->
+                                            <div *ngIf="selectCoinForm.controls.address.errors && (selectCoinForm.controls.address.dirty || selectCoinForm.controls.address.touched)"
+                                                class="error matMargin">
+                                                <div [hidden]="!selectCoinForm.controls.address.errors.required">Please
+                                                    select the valid address</div>
+                                            </div>
+                                            <ul class="list-group mt-2">
+                                                <li class="list-group-item" *ngFor="let address of withdrawalAddress">
+                                                    {{address}} <i class="fa fa-times reqFloat" aria-hidden="true"
+                                                        (click)="removeWithdrawalAddress(address)"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6"></div>
+                                        <div class="col-md-2 mt-2">
+                                            <button type="submit" mdbBtn color="primary" class="btn1"
+                                                mdbWavesEffect>Add</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="row mt-3 white">
+            <div class="col-md-12">
+                <div class="card2">
+                    <div class="container mt-1 mb-1">
+                        <div class="row" (click)="address('crypto2')">
+                            <div class="col-md-3">
+                                <p class="mb-0 mt-1 headfont">CURRENCIES</p>
+                            </div>
+                            <div class="col-md-9">
+                                <p class="mb-0 mt-1 " [hidden]="crypto2">Manager active currencies and pairs.<span
+                                        class="text-right"> <i class="fa fa-angle-down fafa"
+                                            aria-hidden="true"></i></span></p>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="crypto2;">
+                            <div class="col-md-12 mt-4">
+                                <p>Enabled currencies active for deposits,Withrawal & trade </p>
+                                <div class="row">
+                                    <div class="col-md-4 mt-2">
+                                        <button type="button" mdbBtn color="light" class="btn-md btn1 mt-neg"
+                                            mdbWavesEffect>Select All</button>
+                                        <span><button type="button" mdbBtn color="light" class="btn-md btn1 mt-neg"
+                                                mdbWavesEffect>Deslect All</button></span>
+                                    </div>
+                                    <div class="col-md-8"></div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-2">
+                                        <div class="custom-control custom-checkbox mt-1">
+                                            <input type="checkbox" class="custom-control-input" id="defaultUncheckedx"
+                                                checked>
+                                            <label class="custom-control-label headreq"
+                                                for="defaultUncheckedx">BTC</label>
+                                        </div>
+                                        <div class="custom-control custom-checkbox mt-1">
+                                            <input type="checkbox" class="custom-control-input" id="defaultUncheckedx1"
+                                                checked>
+                                            <label class="custom-control-label headreq"
+                                                for="defaultUncheckedx1">LTC</label>
+                                        </div>
+                                        <div class="custom-control custom-checkbox mt-1">
+                                            <input type="checkbox" class="custom-control-input" id="defaultUncheckedx2"
+                                                checked>
+                                            <label class="custom-control-label headreq"
+                                                for="defaultUncheckedx2">BCH</label>
+                                        </div>
+                                        <div class="custom-control custom-checkbox mt-1">
+                                            <input type="checkbox" class="custom-control-input" id="defaultUncheckedx3"
+                                                checked>
+                                            <label class="custom-control-label headreq"
+                                                for="defaultUncheckedx3">ETH</label>
+                                        </div>
+                                        <div class="custom-control custom-checkbox mt-1">
+                                            <input type="checkbox" class="custom-control-input" id="defaultUncheckedx4"
+                                                checked>
+                                            <label class="custom-control-label headreq"
+                                                for="defaultUncheckedx4">ECH</label>
+                                        </div>
+                                        <div class="custom-control custom-checkbox mt-1">
+                                            <input type="checkbox" class="custom-control-input" id="defaultUncheckedx5"
+                                                checked>
+                                            <label class="custom-control-label headreq" for="defaultUncheckedx5">USD
+                                                Wallet</label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="row mt-3 white pointerCursor boxShadowRadius">
+            <div class="col-md-12">
+                <div class="card2">
+                    <div class="container mt-1 mb-1">
+                        <div class="row" (click)="address('crypto3')">
+                            <div class="col-md-3">
+                                <p class="mb-0 mt-1 headfont">FEES</p>
+                            </div>
+                            <div class="col-md-8">
+                                <p class="mb-0 mt-1 " [hidden]="toggleValue==2 && toggleStatus">Adjust fee currencies.
+                                </p>
+                            </div>
+                            <div class="col-md-1">
+                                <i *ngIf="toggleValue==2 && toggleStatus" class="fa fa-angle-up fafa text-right"
+                                    aria-hidden="true"></i>
+                                <i *ngIf="toggleValue!=2 || toggleValue==2 && !toggleStatus"
+                                    class="fa fa-angle-down fafa text-right" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="toggleValue==2 && toggleStatus">
+                            <div class="col-md-12 mt-4">
+                                <p>Your default currency to deduct fee from (for margin trading, Exchange depending on
+                                    Exchange fee setting)</p>
+                                <div class="row">
+                                    <div class="col-md-6 mt-2">
+                                        <button type="button" mdbBtn class="btn  waves-effect btn1 mt-neg"
+                                            mdbWavesEffect
+                                            [ngClass]=" {'btn-primary': feeKeyStatusFiat === true,'btn-outline-primary': feeKeyStatusFiat === false}"
+                                            (click)="feeSetting('USD')">USD</button>
+                                        <span><button type="button" mdbBtn
+                                                class="btn btn-outline-primary waves-effect btn1 mt-neg" mdbWavesEffect
+                                                [ngClass]=" {'btn-primary': feeKeyStatusBtc === true,'btn-outline-primary': feeKeyStatusBtc === false}"
+                                                (click)="feeSetting('BTC')">BTC</button></span>
+                                        <span><button type="button" mdbBtn
+                                                class="btn btn-outline-primary waves-effect btn1 mt-neg" mdbWavesEffect
+                                                [ngClass]=" {'btn-primary': feeKeyStatusRps === true,'btn-outline-primary': feeKeyStatusRps === false}"
+                                                (click)="feeSetting('RPS')">RPS</button></span>
+                                    </div>
+                                    <div class="col-md-8"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3 white pointerCursor boxShadowRadius">
+            <div class="col-md-12">
+                <div class="card2">
+                    <div class="container mt-1 mb-1">
+                        <div class="row" (click)="address('crypto4')">
+                            <div class="col-md-3">
+                                <p class="mb-0 mt-1 headfont">DATE & TIME</p>
+                            </div>
+                            <div class="col-md-8">
+                                <p class="mb-0 mt-1 " [hidden]="toggleValue==3 && toggleStatus">Customize timezone and
+                                    date/time display.</p>
+                            </div>
+                            <div class="col-md-1">
+                                <i *ngIf="toggleValue==3 && toggleStatus" class="fa fa-angle-up fafa text-right"
+                                    aria-hidden="true"></i>
+                                <i *ngIf="toggleValue!=3 || toggleValue==3 && !toggleStatus"
+                                    class="fa fa-angle-down fafa text-right" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="toggleValue==3 && toggleStatus">
+                            <div class="col-md-12 mt-4">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <p class="mb-1 mt-3 itemHead">Time Zone</p>
+                                        <select class="browser-default custom-select back"
+                                            title="Click to select currency">
+                                            <option selected></option>
+                                            <option value="1">BTC</option>
+                                            <option value="2">LTC</option>
+                                            <option value="3">ETH</option>
+                                        </select>
+                                        <p class="mb-1 mt-3 itemHead">Date Format</p>
+                                        <select class="browser-default custom-select back"
+                                            title="Click to select currency">
+                                            <option selected></option>
+                                            <option value="1">BTC</option>
+                                            <option value="2">LTC</option>
+                                            <option value="3">ETH</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3 white mb-3 boxShadowRadius">
+            <div class="col-md-12">
+                <div class="card2">
+                    <div class="container containerSetting mt-1 mb-1">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <p class="mb-0 mt-1 headfont">NOTIFICATIONS</p>
+                            </div>
+                            <div class="col-md-8">
+                                <p class="mb-0 mt-1 ">Manager notifications.</p>
+                            </div>
+                            <div class="col-md-1">
+                                <i class="fa fa-angle-down fafa text-right" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+        </div>
+    </div>
+    <!-- <div mdbModal #twoFaModal="mdbModal" class="modal fade" id="twoFaModal" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content text-center">
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <img src="assets/icons/2fa.png">
+                                <h5 class="mt-2">2FA Authentication</h5>
+                            </div>
+                            <button type="button" class="close pull-right" aria-label="Close"
+                                (click)="twoFaModal.hide()">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <div class="col-md-12 mt-3">
+                                <form [formGroup]="twoFaForm" (ngSubmit)="twoFaModalSubmit()" class="text-center"
+                                    style="color: #757575;">
+                                    <div class="custom-file mt-3">
+                                        <input type="text" [formControl]="twoFaForm.controls.otp" class="form-control"
+                                            id="mainOtp" (keyup)="onKey1($event)" placeholder="OTP" maxlength="6">
+                                        <div *ngIf="twoFaForm.controls.otp.errors && (twoFaForm.controls.otp.dirty || twoFaForm.controls.otp.touched)"
+                                            class="error">
+                                            <div [hidden]="!twoFaForm.controls.otp.errors.required">
+                                                OTP is required
+                                            </div>
+                                            <div [hidden]="!twoFaForm.controls.otp.errors.minlength">
+                                                Invalid OTP
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p *ngIf="authType==true" class="mt-2 " (click)="resendSms()">
+                                        Didn't receive the OTP? <span class="blueFont">Resend</span></p>
+                                    <input mdbBtn color="info" rounded="true" block="true"
+                                        class="my-4 waves-effect z-depth-0" mdbWavesEffect type="submit" value="Submit"
+                                        [disabled]="!twoFaForm.valid"
+                                        [ngClass]=" {'btn-info': twoFaForm.valid === true,'btn-light': twoFaForm.valid === false}">
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</section>

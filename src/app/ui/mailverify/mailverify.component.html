@@ -1,0 +1,27 @@
+
+<section class="backgroundSection2 pb-7">
+    <div class="container">
+        <div class="row" >
+            <div class="col-md-2"></div>
+            <div class="col-md-8" *ngIf="isLoggedIn; else loggedOut" style="margin-top:34%;">
+                <a href="/home"><img src="assets/images/logo.png"  style="margin-left: -2%;" alt="logo"></a>
+                <h3 class="headerFont mt-3">Email Confirmation</h3>
+                <p class="textFont">A confirmation mail has been sent on your Email ID <span class="boldFont">{{id}}</span><br>
+                  Please verify your email to sign in. After receiving the email click on the link provided to complete the registration.</p>
+                <p class="textFont"> Didn't receive the email?<span class="blueFont" (click)="send()"> Resend</span></p>
+            </div>
+              
+              <ng-template #loggedOut>
+                  <div class="col-md-8"  style="margin-top:34%;">
+                      <a href="/home"><img src="assets/images/logo.png"  style="margin-left: -2%;" alt="logo"></a>
+                      <h3 class="headerFont mt-3">Reset Password</h3>
+                      <p class="textFont">A reset link has been sent on your Email ID <span class="boldFont">"test@gmail.com"</span><br>
+                        After receiving the email click on the link provided to reset the password.</p>
+                      <p class="textFont2"> Didn't receive the email?<a > Resend</a></p>
+                  </div>
+              </ng-template>
+              
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+</section>

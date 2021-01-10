@@ -1,0 +1,66 @@
+<section style="height:400px">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 mt-for">
+                <!-- Material form Forgot-->
+                <div class="card1  boxRadius boxShadow">
+                    <!--Card content-->
+                    <mdb-card-body class="px-lg-5 pt-0">
+                        <div class="text-center">
+                            <a routerLink="/home"><img src="assets/images/logo.png" class="rounded" alt="logo"></a>
+                        </div>
+                        <h5 class="text-center py-4">
+                            <strong>Reset Password</strong>
+                        </h5>
+                        <!-- Form -->
+                        <form [formGroup]="forgotForm" (ngSubmit)="resetSubmit()" class="text-center"
+                            style="color: #757575;" *ngIf="resetformSuccess">
+
+                            <!-- Email -->
+                            <mat-form-field appearance="outline" class="fullwidth">
+                                <mat-label>Email</mat-label>
+                                <input matInput type="email" [formControl]="forgotForm.controls.email">
+                            </mat-form-field>
+                            <div *ngIf="forgotForm.controls.email.errors && (forgotForm.controls.email.dirty || forgotForm.controls.email.touched)"
+                                class="error matMargin">
+                                <div [hidden]="!forgotForm.controls.email.errors.required">
+                                    Please enter your email id
+                                </div>
+                                <div [hidden]="!forgotForm.controls.email.errors.email">
+                                    Email must be a valid email
+                                </div>
+                                <div [hidden]="!forgotForm.controls.email.errors.maxlength">
+                                    Email cannot be more than 32 characters long
+                                </div>
+                            </div>
+                            <input mdbBtn color="info" rounded="true" block="true" class="my-4 waves-effect z-depth-0"
+                                mdbWavesEffect type="submit" value="Submit" [disabled]="!forgotForm.valid"
+                                [ngClass]=" {'btn-info': forgotForm.valid === true,'btn-light': forgotForm.valid === false}">
+
+                        </form>
+                        <!-- Form -->
+                        <div class="row" *ngIf="mailSuccess">
+                            <div class="col-md-12">
+                                <p class="headFont">We have sent a confirmation email to your registered email
+                                    address.Please follow the
+                                    instructions in the email to continue.
+                                    If you haven't received the email, please try the following:</p>
+                                <hr>
+                                <ul>
+                                    <li>Check your spam or junk mail folders.</li>
+
+                                    <li>Add Cyphertron to your email address whitelist. How can I do this?</li>
+                                    <li>Make sure your email client is functioning normally.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </mdb-card-body>
+
+                </div>
+                <!-- Material form login -->
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</section>

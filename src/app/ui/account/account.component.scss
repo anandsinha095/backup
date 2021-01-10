@@ -1,0 +1,340 @@
+#shadow{
+    box-shadow: none !important;
+}
+
+.top-nav-collapse {
+    background-color: #0E1A42 !important;
+  }
+  
+  .navbar:not(.top-nav-collapse) {
+    background: transparent !important;
+  }
+  
+  .mt-8{
+    margin-top: 6%;
+}
+.googleAuthWidth{
+  width:100%!important;
+}
+.smsAuthWidth{
+  width:80%!important;
+}
+  @media (max-width: 991px) {
+    .navbar:not(.top-nav-collapse) {
+      background: #0E1A42 !important;
+    }
+    .googleAuthWidth{
+      width:20%!important;
+    }
+    .smsAuthWidth{
+      width:20%!important;
+    }
+  }
+  @media (max-width: 776px) {
+    .containerSetting{
+      padding: 0px 0px 0px 0px;
+    }
+    .mt-8{
+      margin-top: 1%;
+    }
+    .googleAuthWidth{
+      width:10%!important;
+    }
+    .smsAuthWidth{
+      width:10%!important;
+    }
+  }
+  @media (max-width: 742px) {
+    .googleAuthWidth{
+      width:10%!important;
+    }
+    .smsAuthWidth{
+      width:10%!important;
+    }
+  }
+  @media (max-width: 440px) {
+    .containerSetting{
+      padding: 0px 0px 0px 0px;
+    }
+    .mt-8{
+      margin-top: 1%;
+    }
+    html,
+    body,
+    header,
+    #intro-section {
+      min-height: 20vh;
+    }
+    .googleAuthWidth{
+      width:5%!important;
+    }
+    .smsAuthWidth{
+      width: 5% !important;
+    }
+  }
+  .headfont2{
+    color:#53BF00;
+    font-size: 16px;
+  }
+  .headfont3{
+    color:#EF0A0A;
+    font-size: 16px;
+  }
+  .headfontx{
+    color:#EF0A0A;
+    font-size: 14px;
+  }
+  #stepper1 li:hover {
+    background-color: #fff !important;
+}
+.warningBackground{
+  background: #F6FAFF;
+  
+}
+.warningContainerBackground{
+  background: #fff;
+  box-shadow: 0px 7px 11px 0px #d4d4d4;
+}
+
+.stepper2 li a {
+  padding:0px !important;
+}
+.tagp{
+  margin-bottom: 0.5rem!important;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 52px;
+    height: 24px;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 19px;
+    width: 19px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+  .containerSetting{
+    padding: 15px 24px 15px 24px;
+    background: #f7f7f7;
+  }
+  .containerSetting1{
+    padding: 15px 24px 15px 24px;
+  }
+  .itemHead{
+    font-size: 16px;
+    color:#555555;
+    font-weight: 600;
+  }
+  .itemText{
+    font-size: 14px;
+    color:#444444!important;
+  }
+  .transferCoin{
+    float: right; 
+  }
+  .rshadow{
+    box-shadow: none!important;
+  }
+  .headSpan{
+    float: right;
+  }
+  .table1 td{
+    padding-top: 7px !important;
+    padding-bottom: 7px !important;
+    }
+    .vl {
+      border-left: .1px solid #707070;
+      //height: 350px;.modal-backdrop { display: none; }
+      padding-left: 30px;
+    }
+
+    .modal-dialog.modal-notify .modal-header{
+      box-shadow: none;
+      border-bottom: 1px solid #707070;
+    }
+
+  .modelHead{
+    color:#444444;
+    font-size: 24px;
+    font-weight: 600;
+    }
+    .modelText{
+      color:#444444;
+      font-size: 16px;
+      font-weight: 600;
+      }
+    .numberCircle {
+      border-radius: 50%;
+      padding: 4px 9px 4px 9px;
+      
+      background:#D1E4FF;
+      color:#0D5EC8;
+      text-align: center;
+    }
+    .modal { overflow: auto !important; }
+    .paddingModel{
+      padding-left: 6% !important;
+      padding-right: 3% !important;
+      padding-bottom: 0px !important;
+  }
+  .paddingLeft{
+    padding-left:20px;
+  }
+  .error {
+    display: inline-block;
+    font-size: 12px;
+    float: left;
+    color: red;
+}
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color:    #ced4da;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+ color:    #ced4da;
+ opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+ color:   #ced4da;
+ opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color:    #ced4da;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+ color:   #ced4da;
+}
+
+::placeholder { /* Most modern browsers support this now. */
+ color:   #ced4da;
+}
+.borderSuccess {
+  border-left: 22px solid #53BF00;
+}
+.borderError{
+  border-left: 22px solid #EF3636;
+}
+.fontPopup{
+  font-size: 16px;
+font-weight: 600;
+color: #555;
+}
+.field-icon {
+  float: right;
+  margin-left: -25px;
+  margin-top: -5px;
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+  display: block!important;
+  font-size: 18px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+
+.mt-8{
+  margin-top: 7%;
+}
+.gray{
+  background: #e0e0e0;;
+}
+.greenColor{
+  color:#009e73;
+}
+.redColor{
+  color:#d94040;
+}
+.p-x{
+padding:10px 10px 10px 10px;
+}
+.textColor{
+  color:#444444;
+}
+.containerPadding{
+  padding:12px 12px 12px 12px;
+}
+.links{
+  color:#2771D2!important;
+}
+.pointer{
+  cursor:pointer;
+}
+.form-control:focus{
+  border-color: #1A73E8;
+  box-shadow: none !important;
+}
+.backgroundWhite{
+background: #fff;
+}
+.colorBlue{
+  color: #1A73E8;
+}
+.PaddingZero{
+  padding:0px !important;
+}
+.paddingSet{
+  padding: 0px 0px 0px 10px !important;
+}
+.cardPadding{
+  padding: 10px 20px 20px 20px !important;
+}
+.cdk-global-overlay-wrapper, .cdk-overlay-container {
+  z-index: 99999 !important;
+}

@@ -1,0 +1,69 @@
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar" *ngIf="publicNav">
+    <mdb-navbar-brand><a class="navbar-brand" routerLink=""><img src="assets/images/logo.png" class="rounded" alt="logo"></a></mdb-navbar-brand>
+    <links>
+        <ul class="navbar-nav" style="font-size:16px;">
+            <li class="nav-item">
+                <a class="nav-link waves-light ml-3" routerLink="/home" mdbWavesEffect>Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link waves-light ml-3" routerLink="/trade" mdbWavesEffect>Exchange</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link waves-light ml-3" routerLink="/exchange"   mdbWavesEffect>Swap</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link waves-light ml-3" routerLink="/marketcap" mdbWavesEffect>Market cap</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link waves-light ml-3" mdbWavesEffect>Support</a>
+            </li>
+            <li class="nav-item" >
+                <a class="nav-link waves-light ml-5" routerLink="/login" mdbWavesEffect>Login</a>
+            </li>
+            <li class="nav-item ml-3">
+              <a routerLink="/register" mdbBtn color="success" outline="true" size="sm" style="font-size: 0.74rem;" class="align-middle waves-light" mdbWavesEffect type="button">Register</a>
+            </li>            
+        </ul>
+       
+    </links>
+</mdb-navbar>
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar" *ngIf="!publicNav">
+  <mdb-navbar-brand><a class="navbar-brand" routerLink=""><img src="assets/images/logo.png" class="rounded" alt="logo"></a></mdb-navbar-brand>
+  <links>
+      <ul class="navbar-nav" style="font-size:16px;">
+          <li class="nav-item">
+              <a class="nav-link waves-light ml-3" routerLink="/dashboard" mdbWavesEffect>Dashboard</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link waves-light ml-3" routerLink="/trade" mdbWavesEffect>Exchange</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link waves-light ml-3" routerLink="/exchange" mdbWavesEffect>Swap</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link waves-light ml-3" routerLink="/marketcap" mdbWavesEffect>Market cap</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link waves-light ml-3" mdbWavesEffect>Support</a>
+          </li>
+          <li class="nav-item">
+              <a routerLink="/mywallet" class="nav-link waves-light ml-3" mdbWavesEffect>My Wallet</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link waves-light ml-3" mdbWavesEffect> <i class="fa fa-bell" aria-hidden="true"></i>
+              </a>
+          </li>
+          <li class="nav-item dropdown" dropdown>
+              <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+                 | <img src="assets/images/user.png" class="rounded" alt="user"> <span class="fontReq">Hey! {{userFirstName}}</span></a>
+              <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+                  <a routerLink="/account" class="dropdown-item waves-light" mdbWavesEffect>My account</a>
+                  <a routerLink="/settings" class="dropdown-item waves-light" mdbWavesEffect>Setting</a>
+                  <a class="dropdown-item waves-light" mdbWavesEffect (click)="logout()">Logout</a>
+              </div>
+          </li>
+          
+      </ul>
+     
+  </links>
+</mdb-navbar>

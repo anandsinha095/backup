@@ -1,0 +1,767 @@
+<header>
+  <app-nav></app-nav>
+</header>
+<section>
+  <div class="container-fluid" style="background:#fff;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5 mt-9">
+          <p class="mb-1"> Estimated value</p>
+          <h6 class="headfont">$2567 USD</h6>
+
+        </div>
+        <div class="col-md-3 mt-9">
+          <p class="text-left mb-1"> Available Balance</p>
+          <h6 class="text-left headfont2">$2567 USD</h6>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2 mt-9">
+          <p class="text-left mb-1"> In Order</p>
+          <h6 class="text-left headfont3">$2567 USD</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section *ngIf="kycSubmitted">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card1 mt-3">
+          <h4>Thank you for submitting your KYC. we will update your KYC status within 48 hours</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section *ngIf="!kycSubmitted">
+  <div class="container mt-3 mb-1 white mb-3">
+    <div class="row mt-5" *ngIf="!nextProcess">
+      <div class="col-md-12 req">
+        <p class="headfontsMain">KYC Corporate</p>
+        <form [formGroup]="kycCorporateForm" (ngSubmit)="kycCorporateSubmit()">
+          <p class="headfontsx">1. Basic Information</p>
+          <div class="vl">
+            <div class="card2">
+              <div class="row">
+                <div class="col-md-3">
+                  <p class="mb-1 mt-3">Applicant's Firstname<span class="spanColor">*</span></p>
+                  <div class="input-group">
+                    <div class="custom-file ">
+                      <input type="text" [(ngModel)]="userFirstName" [formControl]="kycCorporateForm.controls.firstName"
+                        id="firstName" class="form-control">
+                    </div>
+                  </div>
+                  <div
+                    *ngIf="kycCorporateForm.controls.firstName.errors && (kycCorporateForm.controls.firstName.dirty || kycCorporateForm.controls.firstName.touched)"
+                    class="error">
+                    <div [hidden]="!kycCorporateForm.controls.firstName.errors.required">
+                      Applicant's Firstname required</div>
+                    <div [hidden]="!kycCorporateForm.controls.firstName.errors.pattern">
+                      Only alphabet allowed</div>
+                    <div [hidden]="!kycCorporateForm.controls.firstName.errors.minlength">
+                      Firstname must be at least 2 characters long.</div>
+                    <div [hidden]="!kycCorporateForm.controls.firstName.errors.maxlenth">
+                      Firstname cannot be more than 16 characters long. </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <p class="mb-1 mt-3">Applicant's Lastname<span class="spanColor">*</span></p>
+                  <div class="input-group">
+                    <div class="custom-file ">
+                      <input type="text" [(ngModel)]="userLastName" [formControl]="kycCorporateForm.controls.lastName"
+                        id="lastName" class="form-control">
+                    </div>
+                  </div>
+                  <div
+                    *ngIf="kycCorporateForm.controls.lastName.errors && (kycCorporateForm.controls.lastName.dirty || kycCorporateForm.controls.lastName.touched)"
+                    class="error">
+                    <div [hidden]="!kycCorporateForm.controls.lastName.errors.required">
+                      Applicant's Lastname Required</div>
+                    <div [hidden]="!kycCorporateForm.controls.lastName.errors.pattern">
+                      Only alphabet allowed </div>
+                    <div [hidden]="!kycCorporateForm.controls.lastName.errors.minlength">
+                      Lastname must be at least 2 characters long.</div>
+                    <div [hidden]="!kycCorporateForm.controls.lastName.errors.maxlenth">
+                      Lastname cannot be more than 16 characters long. </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <p class="mb-1 mt-3">Gender<span class="spanColor">*</span></p>
+                  <div class="row marginGender">
+                    <div class="radio-toolbar">
+                      <input type="radio" id="gender" value='MALE' [formControl]="kycCorporateForm.controls.gender"
+                        checked mdbInput>
+                      <label for="gender"><i class="fa fa-male" aria-hidden="true"></i> Male</label>
+                    </div>
+                    <div class="radio-toolbar">
+                      <input type="radio" id="gender2" value='FEMALE' [formControl]="kycCorporateForm.controls.gender"
+                        mdbInput>
+                      <label for="gender2"><i class="fa fa-female" aria-hidden="true"></i> Female</label>
+                    </div>
+                    <div
+                      *ngIf="kycCorporateForm.controls.gender.errors && (kycCorporateForm.controls.gender.dirty || kycCorporateForm.controls.gender.touched)"
+                      class="error">
+                      <div [hidden]="!kycCorporateForm.controls.gender.errors.required">
+                        Gender required</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <p class="mb-1 mt-3">Corporation Name<span class="spanColor">*</span></p>
+                  <div class="input-group">
+                    <div class="custom-file ">
+                      <input type="text" id="corporateName" [formControl]="kycCorporateForm.controls.corporateName"
+                        class="form-control" maxlength="24" minlength="4">
+                    </div>
+                  </div>
+                  <div
+                    *ngIf="kycCorporateForm.controls.corporateName.errors && (kycCorporateForm.controls.corporateName.dirty || kycCorporateForm.controls.corporateName.touched)"
+                    class="error">
+                    <div [hidden]="!kycCorporateForm.controls.corporateName.errors.required">
+                      Corporation Name Required</div>
+                    <div [hidden]="!kycCorporateForm.controls.corporateName.errors.pattern">
+                      Only alphanumric allowed </div>
+                    <div [hidden]="!kycCorporateForm.controls.corporateName.errors.maxlength">
+                      Corporation Name cannot be more than 24 characters long. </div>
+                    <div [hidden]="!kycCorporateForm.controls.corporateName.errors.minlength">
+                      Corporation Name must be at least 6 characters long.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <p class="mb-1 mt-3">Corporation Website<span class="spanColor">*</span></p>
+                  <div class="input-group">
+                    <div class="custom-file ">
+                      <input type="text" id="corporateWebsite"
+                        [formControl]="kycCorporateForm.controls.corporateWebsite" class="form-control" maxlength="32">
+                    </div>
+                  </div>
+                  <div
+                    *ngIf="kycCorporateForm.controls.corporateWebsite.errors && (kycCorporateForm.controls.corporateWebsite.dirty || kycCorporateForm.controls.corporateWebsite.touched)"
+                    class="error">
+                    <div [hidden]="!kycCorporateForm.controls.corporateWebsite.errors.required">
+                      Corporation Website Required</div>
+                    <div [hidden]="!kycCorporateForm.controls.corporateWebsite.errors.pattern">
+                      Invalid URL</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <p class="mb-1 mt-3">Source of Investment Fund<span class="spanColor">*</span></p>
+                  <div class="input-group">
+                    <div class="custom-file ">
+                      <input type="text" id="sourceOfFund" [formControl]="kycCorporateForm.controls.sourceOfFund"
+                        class="form-control" maxlength="24" minlength="2">
+                    </div>
+                  </div>
+                  <div
+                    *ngIf="kycCorporateForm.controls.sourceOfFund.errors && (kycCorporateForm.controls.sourceOfFund.dirty || kycCorporateForm.controls.sourceOfFund.touched)"
+                    class="error">
+                    <div [hidden]="!kycCorporateForm.controls.sourceOfFund.errors.required">
+                      Source of Investment Fund Required</div>
+                    <div [hidden]="!kycCorporateForm.controls.sourceOfFund.errors.pattern">
+                      Only alphanumric allowed</div>
+                    <div [hidden]="!kycCorporateForm.controls.sourceOfFund.errors.maxlength">
+                      Corporation Name cannot be more than 24 characters long. </div>
+                    <div [hidden]="!kycCorporateForm.controls.sourceOfFund.errors.minlength">
+                      Corporation Name must be at least 6 characters long.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <p class="mb-1 mt-3">Tax Identification Number<span class="spanColor">*</span></p>
+                  <div class="input-group">
+                    <div class="custom-file ">
+                      <input type="text" id="taxiDentification"
+                        [formControl]="kycCorporateForm.controls.taxiDentification" class="form-control" maxlength="24"
+                        minlength="6">
+                    </div>
+                  </div>
+                  <div
+                    *ngIf="kycCorporateForm.controls.taxiDentification.errors && (kycCorporateForm.controls.taxiDentification.dirty || kycCorporateForm.controls.taxiDentification.touched)"
+                    class="error">
+                    <div [hidden]="!kycCorporateForm.controls.taxiDentification.errors.required">
+                      Tax Identification Number Required</div>
+                    <div [hidden]="!kycCorporateForm.controls.taxiDentification.errors.pattern">
+                      Only alphanumric allowed</div>
+                    <div [hidden]="!kycCorporateForm.controls.taxiDentification.errors.maxlength">
+                      Tax Identification cannot be more than 24 characters long. </div>
+                    <div [hidden]="!kycCorporateForm.controls.taxiDentification.errors.minlength">
+                      Tax Identification must be at least 6 characters long.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <p class="mb-1 mt-3">Applicant's Designation<span class="spanColor">*</span></p>
+                  <div class="input-group">
+                    <div class="custom-file ">
+                      <input type="text" id="applicantDesignation"
+                        [formControl]="kycCorporateForm.controls.applicantDesignation" class="form-control"
+                        maxlength="24" minlength="6">
+                    </div>
+                  </div>
+                  <div
+                    *ngIf="kycCorporateForm.controls.applicantDesignation.errors && (kycCorporateForm.controls.applicantDesignation.dirty || kycCorporateForm.controls.applicantDesignation.touched)"
+                    class="error">
+                    <div [hidden]="!kycCorporateForm.controls.applicantDesignation.errors.required">
+                      Applicant's Designation Required</div>
+                    <div [hidden]="!kycCorporateForm.controls.applicantDesignation.errors.pattern">
+                      Only alphanumric allowed</div>
+                    <div [hidden]="!kycCorporateForm.controls.applicantDesignation.errors.maxlength">
+                      Applicant's Designation cannot be more than 24 characters long. </div>
+                    <div [hidden]="!kycCorporateForm.controls.applicantDesignation.errors.minlength">
+                      Applicant's Designation must be at least 6 characters long.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="headfontsx pt-3">2. Company Registry Information</p>
+          <div class="vl">
+            <div class="card2">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <p class="mb-1 mt-3">Building Number/Apartment Number<span class="spanColor">*</span></p>
+                      <div class="input-group">
+                        <div class="custom-file ">
+                          <input type="text" id="buildingNumber"
+                            [formControl]="kycCorporateForm.controls.buildingNumber" class="form-control" maxlength="64"
+                            minlength="6">
+                        </div>
+                      </div>
+                      <div
+                        *ngIf="kycCorporateForm.controls.buildingNumber.errors && (kycCorporateForm.controls.buildingNumber.dirty || kycCorporateForm.controls.buildingNumber.touched)"
+                        class="error">
+                        <div [hidden]="!kycCorporateForm.controls.buildingNumber.errors.required">
+                          Building Number/Apartment Number Required</div>
+                        <div [hidden]="!kycCorporateForm.controls.buildingNumber.errors.pattern">
+                          Only alphanumric allowed</div>
+                        <div [hidden]="!kycCorporateForm.controls.buildingNumber.errors.maxlength">
+                          Building Number/Apartment Number cannot be more than 64 characters long. </div>
+                        <div [hidden]="!kycCorporateForm.controls.buildingNumber.errors.minlength">
+                          Building Number/Apartment Number must be at least 6 characters long.</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <p class="mb-1 mt-3">Street Address/Building Name<span class="spanColor">*</span></p>
+                      <div class="input-group">
+                        <div class="custom-file ">
+                          <input type="text" id="streetAddress" [formControl]="kycCorporateForm.controls.streetAddress"
+                            class="form-control" maxlength="64" minlength="6">
+                        </div>
+                      </div>
+                      <div
+                        *ngIf="kycCorporateForm.controls.streetAddress.errors && (kycCorporateForm.controls.streetAddress.dirty || kycCorporateForm.controls.streetAddress.touched)"
+                        class="error">
+                        <div [hidden]="!kycCorporateForm.controls.streetAddress.errors.required">
+                          Street Address/Building Name Required</div>
+                        <div [hidden]="!kycCorporateForm.controls.streetAddress.errors.pattern">
+                          Only alphanumric allowed</div>
+                        <div [hidden]="!kycCorporateForm.controls.streetAddress.errors.maxlength">
+                          Street Address/Building Name cannot be more than 64 characters long. </div>
+                        <div [hidden]="!kycCorporateForm.controls.streetAddress.errors.minlength">
+                          Street Address/Building Name must be at least 6 characters long.</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <p class="mb-1 mt-3">City<span class="spanColor">*</span></p>
+                      <div class="input-group">
+                        <div class="custom-file ">
+                          <input type="text" id="city" [formControl]="kycCorporateForm.controls.city"
+                            class="form-control" maxlength="24" minlength="2">
+                        </div>
+                      </div>
+                      <div
+                        *ngIf="kycCorporateForm.controls.city.errors && (kycCorporateForm.controls.city.dirty || kycCorporateForm.controls.city.touched)"
+                        class="error">
+                        <div [hidden]="!kycCorporateForm.controls.city.errors.required">
+                          City Required</div>
+                        <div [hidden]="!kycCorporateForm.controls.city.errors.pattern">
+                          Only alphabet allowed</div>
+                        <div [hidden]="!kycCorporateForm.controls.city.errors.maxlength">
+                          City cannot be more than 24 characters long. </div>
+                        <div [hidden]="!kycCorporateForm.controls.city.errors.minlength">
+                          City must be at least 2 characters long.</div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <p class="mb-1 mt-3">State<span class="spanColor">*</span></p>
+                      <div class="input-group">
+                        <div class="custom-file ">
+                          <input type="text" id="state" [formControl]="kycCorporateForm.controls.state"
+                            class="form-control" maxlength="24" minlength="2">
+                        </div>
+                      </div>
+                      <div
+                        *ngIf="kycCorporateForm.controls.state.errors && (kycCorporateForm.controls.state.dirty || kycCorporateForm.controls.state.touched)"
+                        class="error">
+                        <div [hidden]="!kycCorporateForm.controls.state.errors.required">
+                          State Name Required</div>
+                        <div [hidden]="!kycCorporateForm.controls.state.errors.pattern">
+                          Only alphabet allowed</div>
+                        <div [hidden]="!kycCorporateForm.controls.state.errors.maxlength">
+                          State cannot be more than 24 characters long. </div>
+                        <div [hidden]="!kycCorporateForm.controls.state.errors.minlength">
+                          State must be at least 2 characters long.</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <p class="mb-1 mt-3">Corporation Registered Country/ Region<span class="spanColor">*</span></p>
+                      <div class="input-group">
+                        <div class="custom-file ">
+                          <input type="text" id="country" [formControl]="kycCorporateForm.controls.country"
+                            class="form-control" maxlength="24" minlength="2">
+                        </div>
+                      </div>
+                      <div
+                        *ngIf="kycCorporateForm.controls.country.errors && (kycCorporateForm.controls.country.dirty || kycCorporateForm.controls.country.touched)"
+                        class="error">
+                        <div [hidden]="!kycCorporateForm.controls.country.errors.required">
+                          Corporation Registered Country/ Region Required</div>
+                        <div [hidden]="!kycCorporateForm.controls.country.errors.pattern">
+                          Only alphabet allowed</div>
+                        <div [hidden]="!kycCorporateForm.controls.country.errors.maxlength">
+                          Country cannot be more than 24 characters long. </div>
+                        <div [hidden]="!kycCorporateForm.controls.country.errors.minlength">
+                          Country must be at least 2 characters long.</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <p class="mb-1 mt-3">Postal Code<span class="spanColor">*</span></p>
+                      <div class="input-group">
+                        <div class="custom-file ">
+                          <input type="text" id="postalCode" [formControl]="kycCorporateForm.controls.postalCode"
+                            class="form-control" maxlength="24" minlength="2">
+                        </div>
+                      </div>
+                      <div
+                        *ngIf="kycCorporateForm.controls.postalCode.errors && (kycCorporateForm.controls.postalCode.dirty || kycCorporateForm.controls.postalCode.touched)"
+                        class="error">
+                        <div [hidden]="!kycCorporateForm.controls.postalCode.errors.required">
+                          Postal Code Required</div>
+                        <div [hidden]="!kycCorporateForm.controls.postalCode.errors.pattern">
+                          Only alphanumric allowed</div>
+                        <div [hidden]="!kycCorporateForm.controls.postalCode.errors.maxlength">
+                          Postal Code cannot be more than 24 characters long. </div>
+                        <div [hidden]="!kycCorporateForm.controls.postalCode.errors.minlength">
+                          PostalcCode must be at least 6 characters long.</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="headfontsx pt-3">3. Company Office Information</p>
+          <div class="vl">
+            <div class="card2">
+              <div class="row">
+                <div class="col-md-6">
+                  <div *ngIf="!isChecked">
+                    <mdb-checkbox [default]="true" (change)="setOfficeAsRegistry($event)">Same as Company Registry
+                      Information
+                    </mdb-checkbox>
+                  </div>
+                  <div *ngIf="isChecked">
+                    <mdb-checkbox [default]="true" checked="checked" (change)="setOfficeAsRegistry($event)"> Same
+                      as Company Registry Information
+                    </mdb-checkbox>
+                  </div>
+                  <div *ngIf="isChecked">
+                    <p class="mb-1 mt-3">Building Number/Apartment Number<span class="spanColor">*</span></p>
+                    <div class="input-group">
+                      <div class="custom-file ">
+                        <input type="text" id="officeBuildingNumber" class="form-control"
+                          value='{{kycCorporateForm.value.officeBuildingNumber}}'
+                          [formControl]="kycCorporateForm.controls.officeBuildingNumber" readonly>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <p class="mb-1 mt-3">Street Address/Building Name<span class="spanColor">*</span></p>
+                        <div class="input-group">
+                          <div class="custom-file ">
+                            <input type="text" id="officeStreetAddress" class="form-control"
+                              value='{{kycCorporateForm.value.officeStreetAddress}}'
+                              [formControl]="kycCorporateForm.controls.officeStreetAddress" readonly>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <p class="mb-1 mt-3">City<span class="spanColor">*</span></p>
+                        <div class="input-group">
+                          <div class="custom-file ">
+                            <input type="text" id="officeCity" class="form-control"
+                              value='{{kycCorporateForm.value.officeCity}}'
+                              [formControl]="kycCorporateForm.controls.officeCity" readonly>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <p class="mb-1 mt-3">State<span class="spanColor">*</span></p>
+                        <div class="input-group">
+                          <div class="custom-file ">
+                            <input type="text" id="officeState" class="form-control"
+                              value='{{kycCorporateForm.value.officeState}}'
+                              [formControl]="kycCorporateForm.controls.officeState" readonly>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <p class="mb-1 mt-3">Corporation Registered Country/ Region<span class="spanColor">*</span></p>
+                        <div class="input-group">
+                          <div class="custom-file ">
+                            <input type="text" id="officeCountry" class="form-control"
+                              value='{{kycCorporateForm.value.officeCountry}}'
+                              [formControl]="kycCorporateForm.controls.officeCountry" readonly>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="mb-1 mt-3">Postal Code<span class="spanColor">*</span></p>
+                    <div class="input-group">
+                      <div class="custom-file ">
+                        <input type="text" id="officePostalCode" class="form-control"
+                          value='{{kycCorporateForm.value.officePostalCode}}'
+                          [formControl]="kycCorporateForm.controls.officePostalCode" readonly>
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="!isChecked">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <p class="mb-1 mt-3">Building Number/Apartment Number<span class="spanColor">*</span></p>
+                        <div class="input-group">
+                          <div class="custom-file ">
+                            <input type="text" id="officeBuildingNumber" class="form-control"
+                              [formControl]="kycCorporateForm.controls.officeBuildingNumber">
+                          </div>
+                        </div>
+                        <div
+                          *ngIf="kycCorporateForm.controls.officeBuildingNumber.errors && (kycCorporateForm.controls.officeBuildingNumber.dirty || kycCorporateForm.controls.officeBuildingNumber.touched)"
+                          class="error">
+                          <div [hidden]="!kycCorporateForm.controls.officeBuildingNumber.errors.required">
+                            Building Number/Apartment Number Required</div>
+                          <div [hidden]="!kycCorporateForm.controls.officeBuildingNumber.errors.pattern">
+                            Only alphanumric allowed</div>
+                          <div [hidden]="!kycCorporateForm.controls.officeBuildingNumber.errors.maxlength">
+                            Building Number/Apartment Number cannot be more than 64 characters long. </div>
+                          <div [hidden]="!kycCorporateForm.controls.officeBuildingNumber.errors.minlength">
+                            Building Number/Apartment Number must be at least 6 characters long.</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <p class="mb-1 mt-3">Street Address/Building Name<span class="spanColor">*</span></p>
+                        <div class="input-group">
+                          <div class="custom-file ">
+                            <input type="text" id="officeStreetAddress2" class="form-control"
+                              [formControl]="kycCorporateForm.controls.officeStreetAddress">
+                          </div>
+                        </div>
+                        <div
+                          *ngIf="kycCorporateForm.controls.officeStreetAddress.errors && (kycCorporateForm.controls.officeStreetAddress.dirty || kycCorporateForm.controls.officeStreetAddress.touched)"
+                          class="error">
+                          <div [hidden]="!kycCorporateForm.controls.officeStreetAddress.errors.required">
+                            Street Address/Building Name Required</div>
+                          <div [hidden]="!kycCorporateForm.controls.officeStreetAddress.errors.pattern">
+                            Only alphanumric allowed</div>
+                          <div [hidden]="!kycCorporateForm.controls.officeStreetAddress.errors.maxlength">
+                            Street Address/Building Name cannot be more than 64 characters long. </div>
+                          <div [hidden]="!kycCorporateForm.controls.officeStreetAddress.errors.minlength">
+                            Street Address/Building Name must be at least 6 characters long.</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <p class="mb-1 mt-3">City<span class="spanColor">*</span></p>
+                        <div class="input-group">
+                          <div class="custom-file ">
+                            <input type="text" id="officeCity2" class="form-control"
+                              [formControl]="kycCorporateForm.controls.officeCity" minlength="2" maxlength="24">
+                          </div>
+                        </div>
+                        <div
+                          *ngIf="kycCorporateForm.controls.officeCity.errors && (kycCorporateForm.controls.officeCity.dirty || kycCorporateForm.controls.officeCity.touched)"
+                          class="error">
+                          <div [hidden]="!kycCorporateForm.controls.officeCity.errors.required">
+                            officeCity Required</div>
+                          <div [hidden]="!kycCorporateForm.controls.officeCity.errors.pattern">
+                            Only alphabet allowed</div>
+                          <div [hidden]="!kycCorporateForm.controls.officeCity.errors.maxlength">
+                            officeCity cannot be more than 24 characters long. </div>
+                          <div [hidden]="!kycCorporateForm.controls.officeCity.errors.minlength">
+                            officeCity must be at least 2 characters long.</div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <p class="mb-1 mt-3">State<span class="spanColor">*</span></p>
+                        <div class="input-group">
+                          <div class="custom-file ">
+                            <input type="text" id="officeState2" class="form-control"
+                              [formControl]="kycCorporateForm.controls.officeState" minlength="2" maxlength="24">
+                          </div>
+                        </div>
+                        <div
+                          *ngIf="kycCorporateForm.controls.officeState.errors && (kycCorporateForm.controls.officeState.dirty || kycCorporateForm.controls.officeState.touched)"
+                          class="error">
+                          <div [hidden]="!kycCorporateForm.controls.officeState.errors.required">
+                            State Name Required</div>
+                          <div [hidden]="!kycCorporateForm.controls.officeState.errors.pattern">
+                            Only alphabet allowed</div>
+                          <div [hidden]="!kycCorporateForm.controls.officeState.errors.maxlength">
+                            State cannot be more than 24 characters long. </div>
+                          <div [hidden]="!kycCorporateForm.controls.officeState.errors.minlength">
+                            State must be at least 2 characters long.</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <p class="mb-1 mt-3">Corporation Registered Country/ Region<span class="spanColor">*</span>
+                        </p>
+                        <div class="input-group">
+                          <div class="custom-file ">
+                            <input type="text" id="officeCountry2" class="form-control"
+                              [formControl]="kycCorporateForm.controls.officeCountry" maxlength="24" minlength="2">
+                          </div>
+                        </div>
+                        <div
+                          *ngIf="kycCorporateForm.controls.officeCountry.errors && (kycCorporateForm.controls.officeCountry.dirty || kycCorporateForm.controls.officeCountry.touched)"
+                          class="error">
+                          <div [hidden]="!kycCorporateForm.controls.officeCountry.errors.required">
+                            Corporation Registered officeCountry/ Region Required</div>
+                          <div [hidden]="!kycCorporateForm.controls.officeCountry.errors.pattern">
+                            Only alphabet allowed</div>
+                          <div [hidden]="!kycCorporateForm.controls.officeCountry.errors.maxlength">
+                            Country cannot be more than 24 characters long. </div>
+                          <div [hidden]="!kycCorporateForm.controls.officeCountry.errors.minlength">
+                            Country must be at least 2 characters long.</div>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="mb-1 mt-3">Postal Code<span class="spanColor">*</span></p>
+                    <div class="input-group">
+                      <div class="custom-file ">
+                        <input type="text" id="officePostalCode" class="form-control"
+                          [formControl]="kycCorporateForm.controls.officePostalCode" maxlength="24" minlength="2">
+                      </div>
+                    </div>
+                    <div
+                      *ngIf="kycCorporateForm.controls.officePostalCode.errors && (kycCorporateForm.controls.officePostalCode.dirty || kycCorporateForm.controls.officePostalCode.touched)"
+                      class="error">
+                      <div [hidden]="!kycCorporateForm.controls.officePostalCode.errors.required">
+                        Postal Code Required</div>
+                      <div [hidden]="!kycCorporateForm.controls.officePostalCode.errors.pattern">
+                        Only alphanumric allowed</div>
+                      <div [hidden]="!kycCorporateForm.controls.officePostalCode.errors.maxlength">
+                        Postal Code cannot be more than 24 characters long. </div>
+                      <div [hidden]="!kycCorporateForm.controls.officePostalCode.errors.minlength">
+                        Postal Code must be at least 6 characters long.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-md-4">
+              <input _ngcontent-c5="" block="true" class="my- z-depth-0 btn btn-rounded btn-block" rounded="true"
+                type="submit" value="PROCEED TO NEXT STEP" ng-reflect-rounded="true" ng-reflect-block="true"
+                [disabled]="!kycCorporateForm.valid"
+                [ngClass]=" {'btn-info': kycCorporateForm.valid === true,'btn-light': kycCorporateForm.valid === false}">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row" *ngIf="nextProcess">
+      <div class="col-md-12 req">
+        <div class="row">
+          <div class="col-md-6">
+            <p class="headfontsMain">KYC Corporate</p>
+          </div>
+          <div class="col-md-6">
+            <p class="backbutton" (click)="testing()"><i class="fa fa-chevron-circle-left fafaFont"
+                aria-hidden="true"></i>
+              Go to previous step</p>
+          </div>
+        </div>
+        <form [formGroup]="kycCorporateNextForm" (ngSubmit)="kycCorporateNextSubmit()">
+          <p class="headfontsx pt-3">4.Corporation Documents</p>
+          <div class="vl">
+            <div class="card2">
+              <div class="row">
+                <div class="col-md-12">
+                  <p class="mb-1 mt-3 fontText">Select Document</p>
+                  <p>Select personal document type you would like to submit.</p>
+                  <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn" (click)="documents(1)"
+                      [ngClass]=" {'btn-primary': document === 1,'btn-outline-primary': document === 2 || document === 3 }">Passport</button>
+                    <button type="button" class="btn" (click)="documents(2)"
+                      [ngClass]=" {'btn-primary': document === 2 ,'btn-outline-primary': document === 1 || document === 3 }">Driving
+                      Licence</button>
+                    <button type="button" class="btn" (click)="documents(3)"
+                      [ngClass]=" {'btn-primary': document === 3 ,'btn-outline-primary': document === 2 || document === 1 }">Other</button>
+                  </div>
+                  <!------------ Document type ------------->
+                  <div class="row">
+                    <div class="col-md-12 pt-3">
+                      <p class="mb-1 mt-3 fontText">{{imageHeaderFirst}}<span class="spanColor">*</span></p>
+                      <p>{{imageTextFirst}}</p>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <img src="{{placeholderImgUrl}}"
+                            [ngClass]=" {'imgSize': document === 1,'imgSizeOther': document === 2 || document === 3}">
+                          <div class="custom-file ">
+                            <label>Click to choose a file
+                              <input type="file" [formControl]="kycCorporateNextForm.controls.top" accept="image/*"
+                                (change)='handlingImage($event,"top")' size="60">
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <img src="{{dummyImageFront}}">
+                          <label class="label2">
+                            Example
+                          </label>
+                        </div>
+                      </div>
+                      <div
+                        *ngIf="kycCorporateNextForm.controls.top.errors && (kycCorporateNextForm.controls.top.dirty || kycCorporateNextForm.controls.top.touched)"
+                        class="error">
+                        <div [hidden]="!kycCorporateNextForm.controls.top.errors.required">
+                          Front pic required of the doc</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 pt-3">
+                      <p class="mb-1 mt-3 fontText">{{imageHeaderSecond}}<span class="spanColor">*</span></p>
+                      <p>{{imageTextSecond}}</p>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <img src="{{placeholderImgUrl2}}"
+                            [ngClass]=" {'imgSizePassposrt': document === 1,'imgSizeOther': document === 2 || document === 3}">
+                          <div class="custom-file ">
+                            <label>Click to choose a file
+                              <input type="file" [formControl]="kycCorporateNextForm.controls.back" accept="image/*"
+                                (change)='handlingImage($event,"back")' size="60">
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <img src="{{dummyImageBack}}">
+                          <label class="label3">
+                            Example
+                          </label>
+                        </div>
+                      </div>
+                      <div
+                        *ngIf="kycCorporateNextForm.controls.back.errors && (kycCorporateNextForm.controls.back.dirty || kycCorporateNextForm.controls.back.touched)"
+                        class="error">
+                        <div [hidden]="!kycCorporateNextForm.controls.back.errors.required">
+                          back side pic required of the doc</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 pt-3">
+                      <p class="mb-1 mt-3 fontText">{{imageHeaderThird}}<span class="spanColor">*</span>
+                      </p>
+                      <p>{{imageTextThird}}</p>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <img src="{{placeholderImgUrl3}}" width="395" height="225">
+                          <div class="custom-file">
+                            <label>Click to choose a file
+                              <input type="file" accept='image/*' [formControl]="kycCorporateNextForm.controls.selfey"
+                                (change)='handlingImage($event,"selfey")' size="60">
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <img src="{{dummyImageSelfie}}">
+                          <label class="label3">
+                            Example
+                          </label>
+                        </div>
+                      </div>
+                      <div
+                        *ngIf="kycCorporateNextForm.controls.selfey.errors && (kycCorporateNextForm.controls.selfey.dirty || kycCorporateNextForm.controls.selfey.touched)"
+                        class="error">
+                        <div [hidden]="!kycCorporateNextForm.controls.selfey.errors.required">
+                          Selfie with ID card</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 pt-3">
+                      <p class="mb-1 mt-3 fontText">Corporation and Business Registration Certificate</p>
+                      <p> Supported formats: JPG, PNG, PDF, DOC/DOCX, XLS/XLSX. Maximum file size: 3 MB.</p>
+                      <div class="custom-file">
+                        <label>Click to choose a file
+                          <input type="file" [formControl]="kycCorporateNextForm.controls.certifiacate"
+                            (change)='companyFiles($event,"certifiacate")'>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 pt-3">
+                      <p class="mb-1 mt-3 fontText">List of Boards</p>
+                      <p> Supported formats: JPG, PNG, PDF, DOC/DOCX, XLS/XLSX. Maximum file size: 3 MB.</p>
+                      <div class="custom-file">
+                        <label>Click to choose a file
+                          <input type="file" [formControl]="kycCorporateNextForm.controls.listOfBoards"
+                            (change)='companyFiles($event,"listOfBoards")'>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <input _ngcontent-c5="" block="true" class="my- z-depth-0 btn btn-rounded btn-block" rounded="true"
+                type="submit" value="Submit KYC" ng-reflect-rounded="true" ng-reflect-block="true"
+                [disabled]="!kycCorporateNextForm.valid"
+                [ngClass]=" {'btn-info': kycCorporateNextForm.valid === true,'btn-light': kycCorporateNextForm.valid === false}">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<ngx-spinner></ngx-spinner>

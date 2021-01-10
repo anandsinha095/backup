@@ -1,0 +1,47 @@
+<header>
+    <app-nav></app-nav>
+    
+</header>
+<section>    
+  <div class="container  mt-8">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card1">
+            <div class="table-responsive">
+              <table class="table table-striped" *ngIf="users">
+                  <thead class="white black-text">
+                    <tr>
+                      <th scope="col">Name</th>
+                      <th scope="col">Marketcap</th>
+                      <th scope="col">USD Price</th>
+                      <th scope="col">Volume(24h)</th>
+                      <th scope="col">Change(24h)</th> 
+                      <th scope="col">Circulating Supply</th>
+                    </tr>
+                  </thead>
+                  <tbody class="table">
+                    <tr *ngFor="let user of users">
+                      <td class="textColor"><span *ngIf="user.symbol=='BTC'"><img src="assets/icons/Group 795.svg"></span> 
+                          <span *ngIf="user.symbol=='BCH'"><img src="assets/icons/Group 797.svg"></span>
+                          <span *ngIf="user.symbol=='ETH'"><img src="assets/icons/Group 822.svg"></span> 
+                          <span *ngIf="user.symbol=='BNB'"><img src="assets/icons/Group 823.svg"></span> 
+                          <span *ngIf="user.symbol=='XLM'"><img src="assets/icons/stellar-coin.svg"></span>
+                          <span *ngIf="user.symbol=='LTC'"><img src="assets/icons/coin.svg"></span> 
+                          <span *ngIf="user.symbol=='TRX'"><img src="assets/icons/Group 821.png"></span>
+                          <span *ngIf="user.symbol=='EOS'"><img src="assets/icons/Group 685.svg"></span> 
+                          <span *ngIf="user.symbol=='USDT'"><img src="assets/icons/825.png"></span> 
+                          <span *ngIf="user.symbol=='XRP'"><img src="assets/icons/Group 824.svg"></span> {{ user.name }}</td>
+                      <td class="textColor">{{ user.market_cap_usd}}</td>
+                      <td class="textColor">${{ user.price_usd}}</td>
+                      <td class="textColor">{{ user['24h_volume_usd']}}</td> 
+                      <td [ngClass]="{'greenColor':user.percent_change_24h>0,'redColor':user.percent_change_24h<0}">{{ user.percent_change_24h}}</td>       
+                      <td class="textColor">{{user.available_supply}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>    

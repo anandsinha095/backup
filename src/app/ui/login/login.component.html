@@ -1,0 +1,72 @@
+<section style="height:400px">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 mt-x">
+                <!-- Material form login -->
+                <div class="card1 boxRadius boxShadow">
+
+                    <!--Card content-->
+                    <mdb-card-body class="px-lg-5 pt-0">
+                        <div class="text-center">
+                            <a routerLink="/home"><img src="assets/images/logo.png" class="rounded" alt="logo"></a>
+                        </div>
+                        <h5 class="text-center py-4">
+                            <strong>Login</strong>
+                        </h5>
+                        <p class="requiredFont"><i class="fa fa-info-circle iconColor" aria-hidden="true"></i>
+                            Please check that you are visiting https://www.chiperchange.com</p>
+                        <!-- Form -->
+                        <form class="text-center" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+                            <!-- Email -->
+                            <mat-form-field appearance="outline" class="fullwidth">
+                                <mat-label>Email</mat-label>
+                                <input matInput type="email" [formControl]="loginForm.controls.email">
+                            </mat-form-field>
+                            <div *ngIf="submitted && loginForm.controls.email.errors" class="error matMargin">
+                                <div *ngIf="loginForm.controls.email.errors.required">Please enter your email id</div>
+                                <div *ngIf="loginForm.controls.email.errors.email">Invalid email id</div>
+                            </div>
+                            <!-- Password -->
+                            <mat-form-field appearance="outline" class="fullwidth">
+                                <mat-label>Password</mat-label>
+                                <input matInput type="password" [formControl]="loginForm.controls.password" #x><span class="fa field-icon"
+                                (click)="x.type=x.type=='password'?'text':'password'"
+                                [ngClass]=" {'fa-eye-slash ': x.type === 'password','fa-eye': x.type === 'text'}"></span>
+                            </mat-form-field>
+                            <div *ngIf="submitted && loginForm.controls.password.errors" class="error matMargin">
+                                <div *ngIf="loginForm.controls.password.errors.required">Please enter your password</div>
+                                <div *ngIf="loginForm.controls.password.errors.minlength">Invalid Password</div>
+                            </div>
+                            <!-- Sign in button -->
+                            <input mdbBtn rounded="true" block="true" class="my-4 waves-effect z-depth-0" mdbWavesEffect
+                                type="submit" value="Login" [disabled]="!loginForm.valid"
+                                [ngClass]=" {'btn-info': loginForm.valid === true,'btn-light': loginForm.valid === false}">
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <p class="floatLeft">
+                                        <a routerLink="/forgot">Forgot password?</a>
+                                    </p>
+                                </div>
+                                <div class="col-md-8">
+                                    <p class="floatRight">Don't have an account?
+                                        <a routerLink="/register">Register</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Register -->
+                        </form>
+                        <!-- Form -->
+                    </mdb-card-body>
+
+                </div>
+                <!-- verify form login -->
+
+                <!-- Material form login -->
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</section>

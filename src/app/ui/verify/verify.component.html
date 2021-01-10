@@ -1,0 +1,37 @@
+<section style="height:400px">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 mt-for">
+                <div class="card1  boxRadius boxShadow">
+                    <mdb-card-body class="px-lg-5 pt-0">
+                        <div class="text-center">
+                            <a routerLink="/home"><img src="assets/images/logo.png" class="rounded" alt="logo"></a>
+                        </div>
+                        <h5 class="text-center py-4">
+                            <strong>2 Factor Authentication</strong>
+                        </h5>
+                        <form [formGroup]="verifyForm" (ngSubmit)="otpSubmit()" style="color: #757575;">
+                            <mat-form-field appearance="outline" class="fullwidth">
+                                <mat-label>OTP</mat-label>
+                                <input matInput type="number" [formControl]="verifyForm.controls.otp"
+                                    (keyup)="onKey($event)">
+                            </mat-form-field>
+                            <div *ngIf="submitted && verifyForm.controls.otp.errors" class="error matMargin">
+                                <div *ngIf="verifyForm.controls.otp.errors.required">Please enter OTP</div>
+                                <div *ngIf="verifyForm.controls.otp.errors.minlength">Invalid OTP</div>
+                            </div>
+                            <p *ngIf="authStatus==true" (click)="resendSmsAgain()">Didn't receive the OTP?
+                                <span class="blueFont field-icon">Resend</span></p>
+                            <input mdbBtn color="info" rounded="true" block="true" class="my-4 waves-effect z-depth-0"
+                                mdbWavesEffect type="submit" value="Submit" [disabled]="!verifyForm.valid"
+                                [ngClass]=" {'btn-info': verifyForm.valid === true,'btn-light': verifyForm.valid === false}">
+
+                        </form>
+                    </mdb-card-body>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,159 @@
+<header>
+    <app-nav></app-nav>
+</header>
+<section>
+    <div class="container-fluid" style="background:#fff;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 mt-9">
+                    <p class="mb-1"> Total Balance</p>
+                    <h6 class="headfont">$2567 USD</h6>
+
+                </div>
+                <div class="col-md-3 mt-9">
+                    <p class="text-left mb-1"> Available Balance</p>
+                    <h6 class="text-left headfont2">$2567 USD</h6>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-2 mt-9">
+                    <p class="text-left mb-1"> In Order</p>
+                    <h6 class="text-left headfont3">$2567 USD</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container mt-3 mb-1">
+        <div class="row mt-5 ">
+            <div class="col-md-7">
+                <p class="headfonts">Exchange</p>
+                <div class="card2  boxShadow boxRadius">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p class="mb-1 mt-3">You Send<span class="floatRight">Minimum Value:0.01 BTC</span></p>
+                        </div>
+                    </div>
+                    <div class="input-group borderNeed">
+                        <div class="custom-file">
+                            <input type="text" id="exampleForm2" class="form-control borderNotneeded">
+                            <div class="input-group-prepend">
+                                <span>
+                                    <select class="browser-default custom-select  btcCoin">
+                                        <option selected class="btc">BTC</option>
+                                        <option value="1">ETH</option>
+                                        <option value="2">LTC</option>
+                                        <option value="3">BCH</option>
+                                    </select>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mt-2 floatRight">1 ETH=<span>$224.87</span></p>
+                    <p class="mb-1 mt-4">You Get</p>
+                    <div class="input-group borderNeed">
+                        <div class="custom-file">
+                            <input type="text" id="exampleForm2" class="form-control borderNotneeded">
+                            <div class="input-group-prepend">
+                                <span>
+                                    <select class="browser-default custom-select ethCoin">
+                                        <option style="background-image:url(assets/icons/btcx.png);" selected
+                                            class="eth">
+                                            ETH</option>
+                                        <option value="1" data-thumbnail="assets/icons/btcx.png">ECH </option>
+                                        <option value="2">LTC</option>
+                                        <option value="3">BCH</option>
+                                    </select>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mt-2 floatRight">1 BTC=<span>$10,264.40</span></p>
+                    <input mdbBtn color="primary" rounded="true" block="true" class="my-4 waves-effect z-depth-0"
+                        mdbWavesEffect type="submit" value="Continue">
+                </div>
+            </div>
+
+            <div class="col-md-5 mb-3">
+                <p class="headfonts">Order Details</p>
+                <div class="card2  white boxShadow boxRadius">
+                    <p class="mb-0 mt-1 ">Expected Exchange Rate</p>
+                    <p class="mb-0 mt-1 itemfonts">1 BTC <i class="fa fa-exchange" aria-hidden="true"></i> 26.9833 ETH
+                    </p>
+                    <hr>
+                    <p class="mb-0 mt-1 ">Exchange Fee <a routerLink="#"><i class="fa fa-question-circle-o"
+                                aria-hidden="true"></i></a></p>
+                    <p class="mb-0 mt-1 itemfonts">0.1349165 ETH</p>
+                    <hr>
+                    <p class="mb-0 mt-1 ">Network Fee </p>
+                    <p class="mb-0 mt-1 itemfonts">0.002 ETH</p>
+                    <hr>
+                    <p class="mb-0 mt-1 ">Estimated Arrival Time</p>
+                    <p class="mb-0 mt-1 itemfonts">≈ 5-30 minutes</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card2  white boxShadow boxRadius">
+                    <p class="mb-0 mt-1 text-center">Send</p>
+                    <p class="mb-0 mt-1 itemfonts text-center">0.5 ETH</p>
+                    <p class="mb-0 mt-3 text-center">Receive</p>
+                    <p class="mb-0 mt-1 itemfonts text-center">0.002 BTC</p>
+                    <button mdbBtn type="button" color="primary" class="buttonMargin" size="sm"
+                        mdbWavesEffect>Exchange</button>
+                </div>
+                <div class="progress md-progress back">
+                    <div class="progress-bar bg-success " role="progressbar" style="width: 65%" aria-valuenow="25"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card2  white boxShadow boxRadius">
+                    <p class="mb-0 mt-1 text-center">Send</p>
+                    <p class="mb-0 mt-1 itemfonts text-center">2 ETH</p>
+                    <p class="mb-0 mt-3 text-center">Receive</p>
+                    <p class="mb-0 mt-1 itemfonts text-center">0.01 BTC</p>
+                    <button mdbBtn type="button" color="primary" class="buttonMargin" size="sm"
+                        mdbWavesEffect>Exchange</button>
+                </div>
+                <div class="progress md-progress back">
+                    <div class="progress-bar bg-success " role="progressbar" style="width: 65%" aria-valuenow="25"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card2  white boxShadow boxRadius">
+                    <p class="mb-0 mt-1 text-center">Send</p>
+                    <p class="mb-0 mt-1 itemfonts text-center">5 ETH</p>
+                    <p class="mb-0 mt-3 text-center">Receive</p>
+                    <p class="mb-0 mt-1 itemfonts text-center">0.1 BTC</p>
+                    <button mdbBtn type="button" color="primary" class="buttonMargin" size="sm"
+                        mdbWavesEffect>Exchange</button>
+                </div>
+                <div class="progress md-progress back">
+                    <div class="progress-bar bg-success " role="progressbar" style="width: 65%" aria-valuenow="25"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card2  white boxShadow boxRadius">
+                    <p class="mb-0 mt-1 text-center">Send</p>
+                    <p class="mb-0 mt-1 itemfonts text-center">20 ETH</p>
+                    <p class="mb-0 mt-3 text-center">Receive</p>
+                    <p class="mb-0 mt-1 itemfonts text-center">0.5 BTC</p>
+                    <button mdbBtn type="button" color="primary" class="buttonMargin" size="sm"
+                        mdbWavesEffect>Exchange</button>
+                </div>
+                <div class="progress md-progress back">
+                    <div class="progress-bar bg-success " role="progressbar" style="width: 65%" aria-valuenow="25"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

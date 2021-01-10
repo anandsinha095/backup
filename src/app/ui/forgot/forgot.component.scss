@@ -1,0 +1,13 @@
+.error {
+    display: inline-block;
+    font-size: 12px;
+    float:left;
+    color: red;
+}
+span{
+    display:none!important;
+}
+.counter-success{
+    border-bottom: 1px solid #4285f4 !important;
+box-shadow: 0 1px 0 0 #4285f4  !important;
+}
